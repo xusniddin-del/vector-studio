@@ -650,3 +650,59 @@ dialog::backdrop{background:rgba(7,20,51,.6)}
   .trust-track [aria-hidden=true]{display:none}
   .acc-i{flex-grow:1!important}
 }
+
+/* =====================================================================
+   Kichik ekranlar uchun qo‘shimcha moslashuv (280–480px telefonlar)
+   ===================================================================== */
+@media (max-width:480px){
+  .svc2-top{flex-wrap:wrap;gap:12px}
+  .svc2-price{order:3;width:100%;margin-left:0;padding-top:0;white-space:normal;font-size:16px}
+  .svc2 .circ{margin-left:auto;width:44px;height:44px}
+  .tile-lg{width:56px;height:56px;border-radius:16px}
+  .tile-lg svg{width:28px;height:28px}
+  .svc2 h3{font-size:21px}
+  /* Taqqoslash jadvali — telefonda kartalar ko‘rinishida */
+  .cmp-wrap{overflow:visible;border:0;background:none}
+  .cmp{min-width:0;display:block}
+  .cmp thead{display:none}
+  .cmp tbody{display:grid;gap:12px}
+  .cmp tr{display:block;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+  .cmp td{display:block;width:auto!important;padding:12px 16px;border:0}
+  .cmp td:first-child{padding-top:16px;font-size:16px}
+  .cmp td.them::before,.cmp td.us::before{display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;opacity:.7}
+  .cmp td.them::before{content:"Ko‘p studiyalarda"}
+  .cmp td.us::before{content:"Vector Studio’da"}
+  .cmp td.us{padding-bottom:16px}
+  /* Umumiy */
+  section.sec{padding:48px 0}
+  .sec-head{margin-bottom:32px}
+  .hero{padding:32px 0 96px}
+  .calc{padding:20px}
+  .calc-foot .btns{width:100%;justify-content:flex-end}
+  .chip-disc{flex-basis:100%}
+  .offer .btn{width:100%}
+  .w-big{font-size:64px}
+  .c-lines{font-size:20px}
+  .c-lines .sep{display:none}
+  .f-bottom{flex-direction:column;align-items:flex-start}
+  .f-legal-wrap button{margin:6px 16px 0 0}
+  .fab{right:12px;bottom:12px}
+  .fab-main{width:54px;height:54px}
+}
+@media (max-width:340px){
+  .container{padding:0 12px}
+  .hero h1{font-size:26px}
+  .logo{font-size:18px}
+  .logo svg{width:24px;height:29px}
+  .opts{grid-template-columns:minmax(0,1fr)}
+  .tel .pre{padding-right:4px;gap:6px}
+  .why2-i,.w-card,.svc2,.c-form,.cta-band-tx{padding:20px}
+  .acc-i{padding:20px}
+  .promo{font-size:13px}
+  .timer b{min-width:28px;padding:3px 4px}
+}
+/* Katta monitorlar (1920px+) — kontent juda cho‘zilib ketmasin */
+@media (min-width:1800px){
+  :root{--container:1360px}
+  body{font-size:17px}
+}
