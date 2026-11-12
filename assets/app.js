@@ -466,7 +466,7 @@ async function sendLead(payload) {
     await fetch(`https://api.telegram.org/bot${B.token}/sendMessage`, { method: "POST", mode: "no-cors", body: new URLSearchParams({ chat_id: B.chatId, text: "🆕 " + leadText(payload).replace("Assalomu alaykum! Saytdan ariza:", "Yangi ariza (" + payload.form + ")") }) });
     return "ok";
   }
-  return "tg";                                              // 3) Hech narsa ulanmagan — mijoz o‘zi yuboradi
+  throw new Error("Forma ulanmagan: SOZLAMALAR.telegramBot yoki formEndpoint bo‘sh");
 }
 async function submitFlow(form, btn, payload, onDone) {
   const msg = $(".form-msg", form), label = btn.innerHTML;
@@ -475,11 +475,7 @@ async function submitFlow(form, btn, payload, onDone) {
   try {
     const res = await sendLead(payload);
     msg.classList.add("ok");
-    if (res === "tg") {
-      const text = leadText(payload);
-      try { await navigator.clipboard.writeText(text); } catch (e) {}
-      msg.innerHTML = `${esc(T.form.tgReady)}<br><a class="btn btn-primary" href="${esc(S.telegram + "?text=" + encodeURIComponent(text))}" target="_blank" rel="noopener">${icon("telegram")}${esc(T.form.tgButton)}</a>`;
-    } else msg.textContent = T.form.success;
+    msg.textContent = T.form.success;
     btn.disabled = false; btn.removeAttribute("aria-busy"); btn.innerHTML = label;
     onDone();
   } catch (e) {
