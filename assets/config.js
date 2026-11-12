@@ -11,8 +11,8 @@ const SOZLAMALAR = {
   phone: "+998 90 832-44-36",
   phoneHref: "+998908324436",
   email: "",                                   // keyin qo‘shiladi
-  telegram: "https://t.me/mot075",
-  telegramHandle: "@mot075",
+  telegram: "https://t.me/mot_075",
+  telegramHandle: "@mot_075",
   whatsapp: "",                                // hozircha yo‘q
   address: "Farg‘ona viloyati, Marg‘ilon shahri, Vatan MFY, Terak Tagi ko‘chasi, 39-uy",
   // Ish vaqti (Toshkent vaqti). days: 1=Du ... 6=Sha, 0=Ya
@@ -26,7 +26,7 @@ const SOZLAMALAR = {
   // DIQQAT: token sayt kodida ochiq turadi — buning uchun FAQAT arizalar uchun alohida
   // yangi bot oching (@BotFather), asosiy botingiz tokenini bu yerga qo‘ymang.
   // chatId — arizalar keladigan chat (siz yoki guruh). Bot bilan avval /start bosing.
-  telegramBot: { token: "", chatId: "" },
+  telegramBot: { token: "8936571276:AAFBfS1U_rVVcLtGMxjtUJAsaEqr9stO72o", chatId: "8042301004" },
   // Aksiya: har bir qurilmaga birinchi kirgan paytidan boshlab 24 soat
   promo: { enabled: true, hours: 24, percent: 10 },
   storageKey: "vector-studio"
