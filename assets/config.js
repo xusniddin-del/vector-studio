@@ -20,7 +20,7 @@ const SOZLAMALAR = {
   requisites: "",                              // YaTT/MChJ ochilgach yoziladi
   social: {},                                  // { instagram: "https://...", youtube: "https://..." }
   // Google Apps Script "Web app" manzili (…/exec). Bo‘sh bo‘lsa — ariza
-  // Telegram orqali yuboriladi (mijozga tayyor matn bilan @mot075 ochiladi).
+  // Telegram orqali yuboriladi (mijozga tayyor matn bilan @mot_075 ochiladi).
   formEndpoint: "",
   // TELEGRAM BOT ORQALI TO‘G‘RIDAN-TO‘G‘RI (formEndpoint bo‘sh bo‘lsa ishlaydi).
   // DIQQAT: token sayt kodida ochiq turadi — buning uchun FAQAT arizalar uchun alohida
