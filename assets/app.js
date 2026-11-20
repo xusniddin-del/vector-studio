@@ -270,6 +270,63 @@ function renderCalc(focus) {
   if (focus) { const lg = $("legend", form); if (lg) lg.focus({ preventScroll: true }); }
 }
 
+
+/* ---------- Bot sahifasi: telefon va panel maketlari (faqat bezak) ---------- */
+const ROBOT = `<svg class="wb-bot" viewBox="0 0 220 200" aria-hidden="true"><ellipse cx="110" cy="192" rx="70" ry="8" fill="#0B5CF0" opacity=".12"/><rect x="62" y="132" width="96" height="58" rx="26" fill="#fff"/><path d="M84 160h52v18a8 8 0 0 1-8 8H92a8 8 0 0 1-8-8z" fill="#0090FF"/><rect x="22" y="58" width="22" height="48" rx="11" fill="#0B5CF0"/><rect x="176" y="58" width="22" height="48" rx="11" fill="#0B5CF0"/><rect x="34" y="20" width="152" height="118" rx="52" fill="#fff"/><rect x="52" y="44" width="116" height="74" rx="34" fill="#071A4A"/><path d="M78 86q12-16 24 0M118 86q12-16 24 0" stroke="#5CC8FF" stroke-width="7" fill="none" stroke-linecap="round"/><circle cx="110" cy="14" r="8" fill="#0090FF"/><rect x="107" y="16" width="6" height="10" fill="#C4DDFF"/></svg>`;
+const phHead = (name, sub) => `<div class="tg-top"><span class="tg-back">‹</span><span class="tg-nm"><b>${name}</b><small>${sub}</small></span><span class="tg-av"></span></div>`;
+function phoneMock(k) {
+  const scr = {
+    book: phHead("Klinika | Qabulga yozilish", "bot") + `<div class="tg-chat"><span class="tg-me">/start</span>
+      <div class="tg-in">Tekshiring, hammasi to‘g‘rimi?<br><br>🦷 Tish tozalash<br>👩‍⚕️ Shifokor: Karimova N.<br>📅 Chorshanba, 10:00<br>⏱ Taxminan 60 daqiqa<br>💰 350 000 so‘m</div>
+      <div class="tg-in">Tayyor! Siz yozildingiz ✅<br>Yozuv raqami: A-1004<br><br>Bir kun oldin va 2 soat oldin eslatamiz.</div>
+      <div class="tg-kb"><span>📋 Yozuvlarim</span><span>🔁 Ko‘chirish</span></div></div>`,
+    shop: `<div class="ms-top"><span>‹ Orqaga</span><b>Gullar do‘koni<small>mini-ilova</small></b><span>⋯</span></div><div class="ms-body">
+      <div class="ms-row"><span>Atirgul guldastasi × 1</span><b>320 000</b></div><div class="ms-row"><span>Yetkazib berish</span><b>25 000</b></div>
+      <div class="ms-tot"><span>Jami</span><b>345 000 so‘m</b></div><small class="ms-l">To‘lov usuli</small>
+      <div class="ms-pay"><span class="on c-click">Click ✓</span><span class="c-payme">Payme</span><span class="c-uzum">Uzum</span></div>
+      <div class="ms-btn">To‘lash · 345 000</div><small class="ms-l">Uzcard yoki Humo kartasi — buyurtmadan keyin darhol.</small></div>`,
+    mini: `<div class="ms-top"><span>Yopish</span><b>Milliy taomlar<small>mini-ilova</small></b><span>⋯</span></div><div class="ms-body">
+      <div class="mi-cats"><span class="on">Hitlar</span><span>Osh</span><span>Salatlar</span></div>
+      <div class="mi-grid">${[["Osh", "45 000", "#F59E0B,#B45309"], ["Lag‘mon", "38 000", "#F97316,#C2410C"], ["Somsa", "12 000", "#EAB308,#A16207"], ["Manti", "32 000", "#FB7185,#BE123C"]].map(([n, p, g]) => `<div class="mi-c"><i style="background:linear-gradient(135deg,${g})"></i><b>${p} so‘m</b><span>${n}</span><em>+</em></div>`).join("")}</div>
+      <div class="ms-btn">Savat · 2 ta · 83 000</div></div>`,
+    send: phHead("Vector | Arizalar", "bot") + `<div class="tg-chat">
+      <div class="tg-in">🆕 <b>Yangi ariza</b><br>Ism: Dilnoza<br>Tel: +998 90 *** 45 67<br>Xizmat: Ingliz tili kursi<br><br>✅ Google Sheets’ga yozildi</div>
+      <div class="tg-in">📣 Tarqatish yuborildi<br>Kimga: 1 120 mijoz<br>O‘qidi: 812 · Yozildi: 46</div>
+      <div class="tg-kb"><span>📊 Hisobot</span><span>📣 Yangi xabar</span></div></div>`
+  }[k];
+  return `<div class="ph"><div class="ph-scr${k === "book" || k === "send" ? " tg" : ""}"><div class="ph-st"><span>10:25</span><i></i><span>LTE ▮</span></div>${scr}</div></div>`;
+}
+const pill = (t, c) => `<em class="pl pl-${c}">${t}</em>`;
+const PANEL_SCREENS = [
+  () => `<div class="lp-h"><b>Dashbord</b><small>Bot so‘nggi 30 kunda qanday ishladi</small></div>
+    <div class="lp-stats">${[["Tashriflar", "3 420", "+18%"], ["Yangi mijozlar", "612", "+24%"], ["Arizalar", "184", "+11%"], ["Bot orqali to‘lov", "9,8 mln", "+31%"]].map(([a, b, c]) => `<div><small>${a}</small><b>${b}</b><em>${c}</em></div>`).join("")}</div>
+    <div class="lp-row"><div class="lp-card"><small>Kunlik tashriflar</small><div class="lp-bars">${[40, 55, 48, 62, 58, 70, 66, 82, 74, 90, 85, 96].map((h) => `<i style="height:${h}%"></i>`).join("")}</div></div>
+      <div class="lp-card"><small>Qayerdan kelishadi</small>${[["Instagram", 45], ["QR-kod", 26], ["Sayt", 19], ["Telegram qidiruv", 10]].map(([a, p]) => `<div class="lp-src"><span>${a}</span><b>${p}%</b><i><u style="width:${p * 2}%"></u></i></div>`).join("")}</div></div>
+    <div class="lp-card"><small>Yangi arizalar</small>${[["Dilnoza A.", "Tozalash · shanba, 12:30", pill("Yangi", "b")], ["Sardor K.", "Konsultatsiya · Payme", pill("To‘landi", "g")], ["Malika R.", "Davolash", pill("Javob kutmoqda", "o")]].map(([a, b, c]) => `<div class="lp-li"><span class="av">${a[0]}</span><span><b>${a}</b><small>${b}</small></span>${c}</div>`).join("")}</div>`,
+  () => `<div class="lp-h"><b>Mijozlar</b><small>4 860 kishi botga yozgan · bu oy 612 ta yangi</small></div>
+    <div class="lp-row r2"><div class="lp-card lp-tbl">${[["Dilnoza Abdullayeva", "Instagram", "1 000 000", pill("Yangi ariza", "b")], ["Sardor Karimov", "QR-kod", "100 000", pill("To‘landi", "g")], ["Malika Rahimova", "Sayt", "3 350 000", pill("Javob kutmoqda", "o")], ["Jasur Toshmatov", "Instagram", "—", pill("Yangi ariza", "b")], ["Gulnoza Hamidova", "Telegram", "2 100 000", pill("Yozildi", "g")], ["Bobur Aliyev", "QR-kod", "6 400 000", pill("Ko‘chirildi", "s")]].map(([a, b, c, d]) => `<div class="lp-tr"><span class="av">${a[0]}</span><b>${a}</b><span>${b}</span><span>${c}</span>${d}</div>`).join("")}</div>
+      <div class="lp-card"><div class="lp-li"><span class="av">D</span><span><b>Dilnoza Abdullayeva</b><small>Instagram’dan, avgust</small></span></div>
+        <div class="lp-mini"><div><small>To‘lagan</small><b>1 000 000</b></div><div><small>Tashrif</small><b>2</b></div></div><div class="lp-btn">✈ Telegram’da yozish</div>
+        <small class="lp-l">Tarix</small><div class="lp-hist"><span>Tozalashga yozildi · bugun</span><span>Botda savol berdi · bugun</span><span>Click orqali to‘ladi · 2 kun oldin</span></div></div></div>`,
+  () => `<div class="lp-h"><b>Xabarnomalar</b><small>Kerakli guruhga xabar va kim o‘qib yozilgani haqida hisobot</small></div>
+    <div class="lp-row r2"><div class="lp-card lp-tbl">${[["«Shanba kuni bo‘sh joylar»", pill("Bugun 18:00", "s"), "412", "—"], ["«Tozalashga −20%»", pill("Yuborildi", "g"), "2 140", "71%"], ["«Ko‘rikdan o‘tish vaqti»", pill("Yuborildi", "g"), "1 120", "64%"], ["«Bepul konsultatsiya»", pill("Yuborildi", "g"), "860", "78%"], ["«Qora juma: −30%»", pill("Qoralama", "s"), "386", "—"]].map(([a, b, c, d]) => `<div class="lp-tr"><b>${a}</b>${b}<span>${c}</span><span>${d}</span></div>`).join("")}
+        <small class="lp-l">Tayyor mijoz guruhlari</small><div class="lp-mini"><div><small>6 oydan beri kelmagan</small><b>2 140</b></div><div><small>Yozgan, lekin yozilmagan</small><b>412</b></div><div><small>Doimiy mijozlar</small><b>640</b></div></div></div>
+      <div class="lp-card"><b>«Tozalashga −20%»</b><small class="lp-l">12-oktabr, 10:00</small>${[["Yuborildi", "2 140", 100], ["O‘qidi", "1 519", 71], ["Bosdi", "412", 19], ["Yozildi va keldi", "38", 4]].map(([a, b, p]) => `<div class="lp-src"><span>${a}</span><b>${b}</b><i><u style="width:${p}%"></u></i></div>`).join("")}<div class="lp-sum"><small>Tarqatish keltirdi</small><b>10,6 mln so‘m</b></div></div></div>`,
+  () => `<div class="lp-h"><b>Xizmatlar va narxlar</b><small>O‘zingiz o‘zgartirasiz — mijoz botda darhol ko‘radi</small></div>
+    <div class="lp-row r2"><div class="lp-card lp-tbl">${[["Professional tozalash", "350 000", "60 daq", 1], ["Karies davolash", "450 000 dan", "60 daq", 1], ["Shifokor konsultatsiyasi", "100 000", "20 daq", 1], ["Oqartirish", "1 200 000", "90 daq", 1], ["Implantatsiya", "4 500 000 dan", "2 tashrif", 1], ["Breket", "6 000 000 dan", "rejaga ko‘ra", 0]].map(([a, b, c, on]) => `<div class="lp-tr"><b>${a}</b><span>${b} so‘m</span><span>${c}</span><i class="tgl${on ? " on" : ""}"></i></div>`).join("")}
+        <small class="lp-l">Ish vaqti</small><div class="lp-mini"><div><small>Du–Ju</small><b>09:00–20:00</b></div><div><small>Shanba</small><b>09:00–16:00</b></div><div><small>Yakshanba</small><b>Dam olish</b></div></div></div>
+      <div class="lp-card"><b>Professional tozalash</b><div class="lp-img"></div><small class="lp-l">Narx</small><div class="lp-inp">350 000 <small>so‘m</small></div><small class="lp-l">Mijoz botda shunday ko‘radi</small><div class="lp-prev"><b>Professional tozalash</b><span>350 000 so‘m · 60 daqiqa</span><div><em>Yozilish</em><em>To‘lash</em></div></div></div></div>`
+];
+function setupPanel() {
+  const box = $("[data-pn]"); if (!box) return;
+  const tabs = $$("[data-pn-t]", box), views = $$("[data-pn-v]", box);
+  let n = 0, iv;
+  const show = (k) => { n = k; tabs.forEach((t, i) => { t.classList.toggle("on", i === k); t.setAttribute("aria-selected", String(i === k)); }); views.forEach((v, i) => v.classList.toggle("on", i === k)); };
+  const auto = () => { clearInterval(iv); if (!matchMedia("(prefers-reduced-motion: reduce)").matches) iv = setInterval(() => show((n + 1) % tabs.length), 7000); };
+  tabs.forEach((t, i) => t.addEventListener("click", () => { show(i); auto(); }));
+  auto();
+}
+
 /* ---------- 6. BO‘LIMLAR ---------- */
 const head = (title, text, subHtml) => `<div class="sec-head reveal"><h2>${esc(title)}</h2>${subHtml ? `<p>${subHtml}</p>` : text ? `<p>${esc(text)}</p>` : ""}</div>`;
 function placeholderImg(hue = 215) {
@@ -325,8 +382,36 @@ const SECTIONS = {
       </article>`).join("")}</div>
       ${P.excludes ? `<div class="pr-ex reveal"><h3>${esc(T.sections.excludes)}</h3><ul>${P.excludes.map((x) => `<li>${icon("x")}${esc(x)}</li>`).join("")}</ul></div>` : ""}` };
   },
-  benefits: () => ({ html: head(BENEFITS.title) + `<div class="bn">${BENEFITS.items.map((b) => `
-      <div class="bn-i reveal"><span class="bn-ic">${icon(b.icon)}</span><h3>${esc(b.title)}</h3><p>${esc(b.text)}</p></div>`).join("")}</div>` }),
+  benefits: () => {
+    const B = PAGE.benefits || BENEFITS.items, hl = (t) => esc(t).replace(/\{([^}]+)\}/g, "<em>$1</em>");
+    return { html: head(PAGE.benefitsTitle || BENEFITS.title) + `<div class="bn2">${B.map((b, n) => `
+      <div class="bn2-i reveal"><span class="bn2-n" aria-hidden="true">${String(n + 1).padStart(2, "0")}</span><span class="bn2-ic">${icon(b.icon)}</span><h3>${hl(b.title)}</h3><p>${esc(b.text)}</p></div>`).join("")}</div>` };
+  },
+  kinds: () => ({ html: head(PAGE.kindsTitle) + `<div class="kd">${PAGE.kinds.map((k) => `
+      <article class="kd-i reveal"><div class="kd-tx"><h3>${esc(k.title)}</h3><p>${esc(k.text)}</p></div><div class="kd-ph" aria-hidden="true">${phoneMock(k.mock)}</div></article>`).join("")}</div>` }),
+  whybot: () => ({ html: head(PAGE.whyTitle) + `<div class="wb">
+      <article class="wb-i wb-big reveal"><span class="wb-ic">${icon("clock")}</span><div class="wb-num">24/7</div><h3>Mijozlarni tunu kun qabul qiladi</h3><p>Mijoz istalgan vaqtda buyurtma beradi, xizmatga yoziladi yoki savoliga javob oladi — menejer javobini kutmasdan.</p>${ROBOT}</article>
+      <article class="wb-i reveal"><span class="wb-ic">${icon("telegram")}</span><div class="wb-num sm">1 bosish</div><h3>Ilova yuklash shart emas</h3><p>Mijozlaringiz allaqachon Telegram’da — bot bir bosishda ochiladi.</p></article>
+      <article class="wb-i reveal"><span class="wb-ic">${icon("card")}</span><h3>To‘lov to‘g‘ridan-to‘g‘ri chatda</h3><p>Mijoz ikki bosishda to‘laydi — pul darhol hisobingizga tushadi.</p><div class="wb-chips"><span class="c-click">Click</span><span class="c-payme">Payme</span><span class="c-uzum">Uzum</span></div></article>
+      <article class="wb-i reveal"><span class="wb-ic">${icon("layers")}</span><h3>CRM bilan integratsiya</h3><p>Arizalar va to‘lovlar CRM yoki Google Sheets’ga o‘zi tushadi — menejer uchun tayyor.</p><a class="wb-link" href="crm.html">Jarayoningiz uchun shaxsiy CRM ${icon("arrow")}</a></article>
+      <article class="wb-i reveal"><span class="wb-ic">${icon("bell")}</span><h3>Jarayonlarni avtomatlashtirish</h3><p>Bot yozilishlarni tasdiqlaydi, tashrif haqida eslatadi, buyurtma holatini aytadi va mijozlarga xabar tarqatadi.</p></article>
+    </div>` }),
+  panel: () => ({ id: "panel", html: head(PAGE.panelTitle) + `<div class="pn" data-pn>
+      <div class="pn-tabs" role="tablist">${PAGE.panel.map((t, n) => `<button type="button" role="tab" class="pn-t${n ? "" : " on"}" aria-selected="${n ? "false" : "true"}" data-pn-t="${n}"><b>${icon(t.icon)}${esc(t.tab)}</b><span>${esc(t.sub)}</span><i><u></u></i></button>`).join("")}</div>
+      <div class="pn-stage">${PAGE.panel.map((t, n) => `<div class="pn-v${n ? "" : " on"}" data-pn-v="${n}">
+        ${t.notes.map((x, k) => `<div class="pn-note pn-note${k}" aria-hidden="${k > 3}"><b>${esc(x[0])}</b><span>${esc(x[1])}</span></div>`).join("")}
+        <div class="lp" aria-label="${esc(t.tab)} — admin panel ko‘rinishi" role="img"><div class="lp-scr"><div class="lp-side"><div class="lp-logo">${LOGO}<span>Bot paneli<small>● Bot onlayn</small></span></div>
+          ${["Dashbord", "Arizalar", "Mijozlar", "To‘lovlar", "Xabarnomalar", "Xizmatlar va narxlar", "Sozlamalar"].map((m) => `<span class="${m === t.tab ? "on" : ""}">${esc(m)}</span>`).join("")}</div>
+          <div class="lp-main">${PANEL_SCREENS[n]()}</div></div><div class="lp-base"></div></div>
+      </div>`).join("")}</div></div>` }),
+  botfolio: () => {
+    const items = [...PORTFOLIO.filter((p) => p.kinds.includes("bot")), ...(typeof BOT_WORKS !== "undefined" ? BOT_WORKS : [])];
+    if (!items.length) return null;
+    return { id: "portfolio", html: head(PAGE.portfolioTitle || T.sections.portfolio, T.sections.portfolioText) + `<div class="bf">${items.map((p) => `
+      <article class="bf-i reveal"><span class="bf-av">${p.img ? `<img src="${esc(p.img)}" alt="" loading="lazy">` : icon(p.icon || "bot")}</span>
+        <h3>${esc(p.name)}</h3><span class="bf-tag">${esc(p.tag)}</span><p>${esc(p.text)}</p>
+        ${p.url ? `<a class="bf-a" href="${esc(p.url)}" target="_blank" rel="noopener">${icon("telegram")}${esc(p.url.replace(/^https?:\/\/t\.me\//, "@"))}</a>` : `<a class="bf-a" href="#kontakt" data-demo="${esc(p.name)}">${icon("telegram")}${esc(T.sections.demo)}</a>`}</article>`).join("")}</div>` };
+  },
   compare: () => ({ id: "kafolatlar", html: head(T.sections.compare) + `<div class="vs">
       ${[["them", T.sections.compareThem, 1, "xc"], ["us", T.sections.compareUs, 2, "checkc"]].map(([k, h, i, ic]) => `
       <div class="vs-col vs-${k} reveal"><div class="vs-h">${k === "us" ? LOGO : ""}<b>${esc(h)}</b></div>
@@ -670,5 +755,5 @@ function setupReveal() {
     </div></main>${footerHTML()}`;
   document.body.insertAdjacentHTML("afterbegin", html);
   renderCalc(false);
-  setupHeader(); setupTimers(); setupContact(); setupMisc(); setupAcc(); setupSlides(); setupOrder(); setupProcess(); setupReveal();
+  setupHeader(); setupTimers(); setupContact(); setupMisc(); setupAcc(); setupSlides(); setupOrder(); setupProcess(); setupPanel(); setupReveal();
 })();

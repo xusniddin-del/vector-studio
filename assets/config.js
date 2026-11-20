@@ -199,6 +199,11 @@ const SYSTEM = {
     { icon: "layers", title: "O‘zingiz boshqarasiz", text: "Matn, narx va rasmlarni admin paneldan dasturchisiz o‘zgartirasiz. Kod va domen sizniki." }
   ]
 };
+/* Bot sahifasidagi qo‘shimcha ishlar (rasmsiz kartalar). Bot havolasi bo‘lsa — url ga yozing: "https://t.me/..." */
+const BOT_WORKS = [
+  { name: "Kursga yozilish boti", tag: "O‘quv markaz", text: "Ism va telefon bilan kursga yozilish, yangiliklar va eslatmalar.", icon: "edu", url: "" },
+  { name: "Avtosalon boti", tag: "Avto savdo", text: "Katalog, chegirma va yangiliklar, buyurtma va ro‘yxatdan o‘tish.", icon: "cart", url: "" }
+];
 const BENEFITS = {
   title: "Ishga tushgach nimalarga ega bo‘lasiz",
   items: [
@@ -366,6 +371,33 @@ const PAGES = {
     crumb: "Telegram botlar",
     service: "bot",
     processTitle: "Bot yaratish bosqichlari",
+    kindsTitle: "Har qanday murakkablikdagi Telegram botlar",
+    kinds: [
+      { mock: "book", title: "Ariza va yozilish boti", text: "Mijoz o‘zi xizmat, kun va vaqtni tanlaydi, bot esa tashrif haqida eslatib turadi." },
+      { mock: "shop", title: "To‘lovli bot-do‘kon", text: "Katalog, savat va Click / Payme orqali to‘lov — to‘g‘ridan-to‘g‘ri chatda." },
+      { mock: "mini", title: "Telegram Mini App", text: "Do‘kon yoki xizmat Telegram ichidagi ilova sifatida — o‘rnatishsiz." },
+      { mock: "send", title: "Xabar tarqatish va integratsiya", text: "Arizalar Google Sheets yoki CRM’ga tushadi, mijozlarga aksiya bir bosishda yuboriladi." }
+    ],
+    whyTitle: "Nima uchun biznesga Telegram bot kerak",
+    panelTitle: "Botda nima bo‘layotganini shunday ko‘rasiz",
+    panel: [
+      { icon: "trend", tab: "Dashbord", sub: "Tashriflar, arizalar va to‘lovlar", notes: [["Bot haqida hammasi bitta ekranda", "arizalar, mijozlar va to‘lovlar"], ["Bot voronkasi", "kim kirdi, yozildi va to‘ladi"], ["Mijoz qayerdan keldi", "Instagram, QR-kod, sayt"], ["Yangi arizalar", "har birining holati darhol ko‘rinadi"]] },
+      { icon: "users", tab: "Mijozlar", sub: "Har bir mijoz tarixi", notes: [["Mijozlarning to‘liq bazasi", "botga yozgan har bir kishi"], ["Mijoz qayerdan keldi", "Instagram, QR-kod yoki sayt"], ["Mijozga yozish", "paneldan to‘g‘ridan-to‘g‘ri Telegram’ga"], ["Mijozning tarixi", "savollar, yozilishlar va to‘lovlar"]] },
+      { icon: "bell", tab: "Xabarnomalar", sub: "Kerakli mijozlarga xabar", notes: [["Kerakli guruhga xabar", "masalan, uzoq vaqt kelmaganlarga"], ["Guruhlar o‘zi yig‘iladi", "bot mijozlarni o‘zi ajratadi"], ["Tarqatish hisoboti", "kim o‘qidi va yozildi"], ["Qancha daromad keltirdi", "xabardan tushgan tushum"]] },
+      { icon: "tag", tab: "Xizmatlar va narxlar", sub: "Narxlarni o‘zingiz o‘zgartirasiz", notes: [["Narxlarni o‘zingiz o‘zgartirasiz", "dasturchisiz"], ["Ish vaqti", "bot qachon ochiqligini o‘zi aytadi"], ["Yangi narx — darhol botda", "mijoz uni kechikishsiz ko‘radi"], ["Mijoz shunday ko‘radi", "botdagi xizmat kartochkasi"]] }
+    ],
+    portfolioTitle: "Biz ishlab chiqqan Telegram botlar",
+    benefitsTitle: "Bot bilan birga nimalarga ega bo‘lasiz",
+    benefits: [
+      { icon: "shield", title: "{5 yillik} kafolat", text: "Kodimizdagi xatolarni bepul tuzatamiz." },
+      { icon: "headset", title: "{3 oy} bepul yordam", text: "Ishga tushgandan keyin tuzatishlar — qo‘shimcha to‘lovsiz." },
+      { icon: "clock", title: "{3 kundan} ishga tushirish", text: "Oddiy botning birinchi ishchi versiyasi — 3 ish kunidan." },
+      { icon: "file", title: "Narx {yozma kelishuvda}", text: "Narx va muddat ish boshlanishidan oldin qat’iy belgilanadi." },
+      { icon: "percent", title: "To‘lov {50 / 50}", text: "Yarmi boshida, yarmi ishga tushirilgandan keyin." },
+      { icon: "key", title: "Bot {to‘liq sizniki}", text: "Token, server va kod — sizning akkauntingizda." },
+      { icon: "card", title: "{Click, Payme}", text: "To‘lov qabul qilish — pul darhol hisobingizga tushadi." },
+      { icon: "chat", title: "{Ikki til} narx ichida", text: "O‘zbek va rus tillari — har bir tarifda." }
+    ],
     badge: ["BOT", "Telegram bot yaratish"],
     h1: "Telegram bot yaratish xizmati",
     lead: "Bot tunda ham ariza va yozilishlarni qabul qiladi, Click/Payme orqali sotadi va mijozlarga javob beradi. Narx oldindan kelishiladi, 5 yillik kafolat.",
@@ -400,7 +432,7 @@ const PAGES = {
       ["Test", "Barcha tugma va ssenariylarni tekshiramiz.", "Xatosiz ishlaydigan tizim"],
       ["Ishga tushirish", "Server va tokenni topshiramiz, 3 oy bepul yordam.", "Ishlab turgan loyiha va 3 oy yordam"]
     ],
-    sections: ["problems", "system", "tags", "midcta", "pricing", "benefits", "compare", "portfolio", "process", "faq", "industries", "other"],
+    sections: ["kinds", "midcta", "whybot", "panel", "botfolio", "pricing", "benefits", "compare", "process", "faq", "industries", "other"],
     faq: [
       ["Telegram bot qancha turadi?", "Oddiy bot 500 ming so‘mdan, do‘kon boti 2 mln so‘mdan, Mini App 3 mln so‘mdan. Aniq narx ssenariyga bog‘liq."],
       ["Bot va Mini App farqi nima?", "Bot — tugma va xabarlar orqali ishlaydi. Mini App — Telegram ichida ochiladigan to‘liq ilova ko‘rinishidagi interfeys."],
