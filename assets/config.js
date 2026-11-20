@@ -179,13 +179,13 @@ const INDUSTRIES = [
    url: jonli havola bo‘lsa yozing, bo‘lmasa "Demo so‘rash" tugmasi chiqadi */
 const PORTFOLIO = [
   { name: "O‘quv markaz CRM", tag: "CRM tizimi", text: "O‘quvchilar, guruhlar, davomat, to‘lovlar va qarzdorlar — markaz boshqaruvi bitta tizimda.", url: "", img: "assets/img/crm.jpg", kinds: ["home", "crm", "sayt"] },
-  { name: "Klinika boshqaruv dasturi", tag: "Kompyuter dasturi", text: "Stomatologiya va kichik klinikalar uchun qabul jadvali, bemorlar bazasi va kassa.", url: "", img: "assets/img/klinika.jpg", kinds: ["home", "crm", "ilova"] },
+  { name: "Klinika boshqaruv dasturi", icon: "health", stats: [["Platforma","Kompyuter"],["Kim uchun","Klinikalar"],["Ichida","Qabul, kassa"]], tag: "Kompyuter dasturi", text: "Stomatologiya va kichik klinikalar uchun qabul jadvali, bemorlar bazasi va kassa.", url: "", img: "assets/img/klinika.jpg", kinds: ["home", "crm", "ilova"] },
   { name: "Bog‘cha Mini App", tag: "Telegram Mini App", text: "Rahbar, tarbiyachi va ota-ona uchun — davomat, to‘lov va kunlik menyu Telegram ichida.", url: "", img: "assets/img/bogcha.jpg", kinds: ["home", "bot"] },
-  { name: "Kiyim do‘koni ilovasi", tag: "Web-ilova", text: "Kunlik savdo, ombor qoldig‘i va mijozlar — Android va iPhone’da ishlaydi.", url: "", img: "assets/img/kiyim.jpg", kinds: ["home", "ilova", "crm", "sayt"] },
-  { name: "Usta Kassa", tag: "Sartaroshlar uchun", text: "Usta uchun kunlik tushum, naqd/karta, nasiya va mijozlar hisobi.", url: "", img: "assets/img/usta.jpg", kinds: ["home", "bot", "ilova"] },
-  { name: "Vector ta’lim platformasi", tag: "Veb-platforma", text: "IT kurslar, reyting va coin do‘koni bilan onlayn o‘quv platformasi.", url: "", img: "assets/img/vector.jpg", kinds: ["home", "sayt", "ilova"] },
+  { name: "Kiyim do‘koni ilovasi", icon: "cart", stats: [["Platforma","Android, iPhone"],["Kim uchun","Do‘konlar"],["Ichida","Savdo, ombor"]], tag: "Web-ilova", text: "Kunlik savdo, ombor qoldig‘i va mijozlar — Android va iPhone’da ishlaydi.", url: "", img: "assets/img/kiyim.jpg", kinds: ["home", "ilova", "crm", "sayt"] },
+  { name: "Usta Kassa", icon: "scissors", stats: [["Platforma","Telefon"],["Kim uchun","Ustalar"],["Ichida","Tushum, nasiya"]], tag: "Sartaroshlar uchun", text: "Usta uchun kunlik tushum, naqd/karta, nasiya va mijozlar hisobi.", url: "", img: "assets/img/usta.jpg", kinds: ["home", "bot", "ilova"] },
+  { name: "Vector ta’lim platformasi", icon: "edu", stats: [["Platforma","Veb"],["Kim uchun","O‘quvchilar"],["Ichida","Kurs, reyting"]], tag: "Veb-platforma", text: "IT kurslar, reyting va coin do‘koni bilan onlayn o‘quv platformasi.", url: "", img: "assets/img/vector.jpg", kinds: ["home", "sayt", "ilova"] },
   { name: "O‘quv guruh Mini App", tag: "Telegram Mini App", text: "Ustoz va o‘quvchi uchun davomat, baholar va uy vazifalari Telegram ichida.", url: "", img: "assets/img/guruh.jpg", kinds: ["home", "bot"] },
-  { name: "Oldi-Berdi", tag: "Mobil ilova", text: "Qarz berish va olishni yozib boradigan ilova — eslatmalar bilan.", url: "", img: "assets/img/qarz.jpg", kinds: ["home", "ilova", "sayt"] }
+  { name: "Oldi-Berdi", icon: "card", stats: [["Platforma","Telefon"],["Kim uchun","Har kim"],["Ichida","Qarz, eslatma"]], tag: "Mobil ilova", text: "Qarz berish va olishni yozib boradigan ilova — eslatmalar bilan.", url: "", img: "assets/img/qarz.jpg", kinds: ["home", "ilova", "sayt"] }
 ]
 
 /* ---------- 8. TAQQOSLASH JADVALI ---------- */
@@ -322,6 +322,8 @@ const PAGES = {
     crumb: "Mobil ilovalar",
     service: "ilova",
     processTitle: "Ilova yaratish bosqichlari",
+    casesTitle: "Keyslarimiz",
+    casesLeads: ["2018-yildan beri IT sohasida — 7 ta tayyor tizim va dastur ishlab chiqdik", "Har bir ilova real biznes jarayoni uchun yaratilgan"],
     badge: ["APP", "mobil ilova yaratish"],
     h1: "Mobil ilova yaratish xizmati",
     lead: "Android va iPhone uchun ilova yoki do‘konsiz o‘rnatiladigan web-ilova. Narx oldindan kelishiladi, kod va akkauntlar sizniki, 5 yillik kafolat.",
@@ -356,7 +358,7 @@ const PAGES = {
       ["Test", "Haqiqiy telefonlarda sinab chiqamiz.", "Xatosiz ishlaydigan tizim"],
       ["Joylash va yordam", "Do‘konlarga joylaymiz, 3 oy bepul yordam.", "Do‘konlardagi ilova va 3 oy yordam"]
     ],
-    sections: ["problems", "system", "tags", "midcta", "pricing", "benefits", "compare", "portfolio", "process", "faq", "industries", "other"],
+    sections: ["problems", "system", "tags", "midcta", "cases", "pricing", "benefits", "compare", "process", "faq", "industries", "other"],
     faq: [
       ["Ilova qancha turadi?", "Web-ilova va MVP 3 mln so‘mdan, do‘kon va yetkazish ilovasi 9 mln so‘mdan. Aniq narx ekranlar va funksiyalar soniga bog‘liq."],
       ["Web-ilova bilan oddiy ilovaning farqi nima?", "Web-ilova do‘konsiz, havola orqali telefonga o‘rnatiladi va arzonroq. Oddiy ilova Google Play va App Store’da bo‘ladi."],

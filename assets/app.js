@@ -317,6 +317,15 @@ const PANEL_SCREENS = [
         <small class="lp-l">Ish vaqti</small><div class="lp-mini"><div><small>Du–Ju</small><b>09:00–20:00</b></div><div><small>Shanba</small><b>09:00–16:00</b></div><div><small>Yakshanba</small><b>Dam olish</b></div></div></div>
       <div class="lp-card"><b>Professional tozalash</b><div class="lp-img"></div><small class="lp-l">Narx</small><div class="lp-inp">350 000 <small>so‘m</small></div><small class="lp-l">Mijoz botda shunday ko‘radi</small><div class="lp-prev"><b>Professional tozalash</b><span>350 000 so‘m · 60 daqiqa</span><div><em>Yozilish</em><em>To‘lash</em></div></div></div></div>`
 ];
+function setupCases() {
+  const box = $(".cs"); if (!box) return;
+  const more = $("[data-cs-more]", box);
+  if (more) more.addEventListener("click", () => { $$("[data-cs-hide]", box).forEach((c) => { c.hidden = false; c.classList.add("in"); }); more.remove(); });
+  const leads = $$("[data-cs-lead]", box);
+  if (leads.length < 2 || !("IntersectionObserver" in window)) return;
+  const io = new IntersectionObserver((en) => en.forEach((x) => { if (x.isIntersecting) { const k = x.target.dataset.csI; leads.forEach((l) => l.classList.toggle("on", l.dataset.csLead === k)); } }), { rootMargin: "-45% 0px -45% 0px" });
+  $$("[data-cs-i]", box).forEach((c) => io.observe(c));
+}
 function setupPanel() {
   const box = $("[data-pn]"); if (!box) return;
   const tabs = $$("[data-pn-t]", box), views = $$("[data-pn-v]", box);
@@ -404,6 +413,21 @@ const SECTIONS = {
           ${["Dashbord", "Arizalar", "Mijozlar", "To‘lovlar", "Xabarnomalar", "Xizmatlar va narxlar", "Sozlamalar"].map((m) => `<span class="${m === t.tab ? "on" : ""}">${esc(m)}</span>`).join("")}</div>
           <div class="lp-main">${PANEL_SCREENS[n]()}</div></div><div class="lp-base"></div></div>
       </div>`).join("")}</div></div>` }),
+  cases: () => {
+    const items = PORTFOLIO.filter((p) => p.kinds.includes(PAGE_ID));
+    if (!items.length) return null;
+    const L = PAGE.casesLeads || [T.sections.portfolioText], sub = esc(T.sections.portfolioSub).replace(/\{([^}]+)\}/g, "<u>$1</u>");
+    return { id: "portfolio", html: head(PAGE.casesTitle || T.sections.portfolio, null, sub) + `<div class="cs">
+      <div class="cs-l"><div class="cs-st">${L.map((t, n) => `<p class="cs-lead${n ? "" : " on"}" data-cs-lead="${n}">${esc(t)}</p>`).join("")}
+        <a class="btn btn-line cs-more" href="index.html#portfolio">Barcha ishlar ${icon("arrow")}</a></div></div>
+      <div class="cs-list">${items.map((p, n) => `
+        <article class="cs-i reveal" data-cs-i="${Math.min(L.length - 1, Math.floor(n * L.length / items.length))}">
+          <div class="cs-tx"><span class="cs-ic">${icon(p.icon || "mobile")}</span><h3>${esc(p.name)}</h3><span class="cs-tag">${esc(p.tag)}</span><p>${esc(p.text)}</p>
+            ${p.stats ? `<dl class="cs-stats">${p.stats.map(([a, b]) => `<div><dt>${esc(a)}</dt><dd>${esc(b)}</dd></div>`).join("")}</dl>` : ""}
+            <a class="btn btn-dark cs-btn" href="${p.url ? esc(p.url) : "#kontakt"}"${p.url ? ' target="_blank" rel="noopener"' : ` data-demo="${esc(p.name)}"`}>${icon("mobile")}${p.url ? "Ochish" : esc(T.sections.demo)}</a></div>
+          <div class="cs-img"><img loading="lazy" decoding="async" width="800" height="500" src="${p.img ? esc(p.img) : placeholderImg(p.hue)}" alt="${esc(p.name)} — ekran ko‘rinishi"></div>
+        </article>`).join("")}</div></div>` };
+  },
   botfolio: () => {
     const items = [...PORTFOLIO.filter((p) => p.kinds.includes("bot")), ...(typeof BOT_WORKS !== "undefined" ? BOT_WORKS : [])];
     if (!items.length) return null;
@@ -755,5 +779,5 @@ function setupReveal() {
     </div></main>${footerHTML()}`;
   document.body.insertAdjacentHTML("afterbegin", html);
   renderCalc(false);
-  setupHeader(); setupTimers(); setupContact(); setupMisc(); setupAcc(); setupSlides(); setupOrder(); setupProcess(); setupPanel(); setupReveal();
+  setupHeader(); setupTimers(); setupContact(); setupMisc(); setupAcc(); setupSlides(); setupOrder(); setupProcess(); setupPanel(); setupCases(); setupReveal();
 })();
