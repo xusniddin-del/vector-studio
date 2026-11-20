@@ -350,7 +350,7 @@ const SECTIONS = {
     // d — SEO (qidiruv natijasi ko‘rinishi)
     const d = `<article class="w-card w-d reveal">${top(W(2), "trend", ["#FBBF24", "#D97706"])}
       <div class="w-serp" aria-hidden="true"><div class="w-search">${icon("search")}sayt yaratish Marg‘ilon</div>
-      <div class="w-res"><span class="w-pos">1</span><span><small>vectorstudio.uz</small><b>Sayt yaratish — ${esc(S.brandName)}</b></span></div></div></article>`;
+      <div class="w-res"><span class="w-pos">1</span><span><small>vectorstudiya.uz</small><b>Sayt yaratish — ${esc(S.brandName)}</b></span></div></div></article>`;
     // e — hammasi sizniki
     const e = `<article class="w-card w-e reveal">${top(W(4), "key", ["#C084FC", "#9333EA"])}
       <ul class="w-keys" aria-hidden="true">${["Domen", "Kod", "Server", "Admin panel"].map((k) => `<li>${icon("checkc")}${k}</li>`).join("")}</ul></article>`;
