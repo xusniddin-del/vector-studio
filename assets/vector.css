@@ -722,3 +722,43 @@ dialog::backdrop{background:rgba(7,20,51,.6)}
 .fx-i p{font-size:15.5px;line-height:1.6;color:var(--ink-2)}
 .fx-hl p{color:rgba(255,255,255,.85)}
 @media (prefers-reduced-motion:reduce){.fx-i,.fx-i:hover{transform:none;transition:none}}
+
+/* =====================================================================
+   v4 — yengil bosh ekran: oq/och fon, kamroq element, sokin header
+   ===================================================================== */
+.promo{background:var(--sky-50);color:var(--navy);font-size:14px}
+.promo-in{padding:8px 16px}
+.promo .pct{background:var(--brand);color:#fff}
+.promo .timer b{background:#fff;color:var(--brand);min-width:30px;padding:2px 6px;font-size:13px}
+.promo :focus-visible{outline-color:var(--brand)}
+.site-header.top{background:#fff;box-shadow:none}
+.site-header.top .logo,.site-header.top .nav > li > a,.site-header.top .nav > li > button,.site-header.top .h-contact a{color:var(--ink)}
+.site-header.top .logo svg{color:var(--sky)}
+.site-header.top .nav > li > a:hover,.site-header.top .nav > li > button:hover{background:var(--soft)}
+.site-header.top .status{color:var(--muted)}
+.site-header.top .header-cta{background:var(--brand);color:#fff;box-shadow:0 10px 24px rgba(11,92,240,.25)}
+.site-header.top .burger{background:#fff;border-color:var(--line);color:var(--ink)}
+.site-header.top :focus-visible{outline-color:var(--brand)}
+.hero{background:linear-gradient(180deg,#F5F9FF 0%,#EAF3FF 100%);color:var(--ink);padding:56px 0 104px}
+.hero::before{background:radial-gradient(700px 420px at 90% 10%,rgba(0,144,255,.16),transparent 70%)}
+.hero :focus-visible{outline-color:var(--brand)}
+.hero-in{align-items:center}
+.badge{color:var(--brand)}
+.badge b{background:var(--brand);color:#fff}
+.hero h1{text-transform:none;font-size:clamp(32px,4.6vw,58px);line-height:1.08;letter-spacing:-.035em;color:var(--navy)}
+.hero-lead{color:var(--ink-2)}
+.hero-points svg{color:var(--brand)}
+.hero-btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.hero-btns .btn{min-height:56px;padding:16px 26px}
+@media (max-width:480px){.hero-btns .btn{width:100%}}
+.calc{box-shadow:0 30px 60px -30px rgba(7,26,74,.25);border:1px solid var(--line)}
+.hero-trust{list-style:none;margin:56px 0 0;padding:24px 0 0;border-top:1px solid rgba(11,92,240,.12);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px 24px}
+@media (max-width:900px){.hero-trust{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.hero-trust{grid-template-columns:minmax(0,1fr)}}
+.hero-trust li{display:flex;align-items:center;gap:12px;font-weight:700;font-size:15px;color:var(--ink-2)}
+.hero-trust svg{width:36px;height:36px;padding:8px;border-radius:10px;background:#fff;color:var(--brand);flex:none;box-shadow:0 4px 12px -4px rgba(11,92,240,.25)}
+.crumbs{color:var(--muted)}.crumbs a{color:var(--brand)}
+.sheet{margin-top:-40px}
+
+.promo-s{display:none}
+@media (max-width:640px){.promo-l{display:none}.promo-s{display:inline}.promo-in{flex-wrap:nowrap;gap:8px;font-size:13px;padding:7px 12px}.promo .timer b{min-width:26px;padding:2px 4px}}

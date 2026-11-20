@@ -145,7 +145,7 @@ function headerHTML() {
 }
 function promoHTML() {
   if (!promoActive()) return "";
-  return `<div class="promo" id="promo"><div class="promo-in"><span class="pct">${icon("percent")}</span><span>${esc(pctText(T.promo))}</span>
+  return `<div class="promo" id="promo"><div class="promo-in"><span class="pct">${icon("percent")}</span><span class="promo-l">${esc(pctText(T.promo))}</span><span class="promo-s">${esc(pctText("Bugun {percent}% chegirma:"))}</span>
     <span class="timer js-timer" aria-label="Qolgan vaqt"><b>00</b><i>:</i><b>00</b><i>:</i><b>00</b></span></div></div>`;
 }
 
@@ -153,25 +153,25 @@ function promoHTML() {
 function heroHTML() {
   const crumbs = PAGE_ID === "home" ? "" : `<nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">${esc(T.nav.home)}</a></li><li aria-current="page">${esc(PAGE.crumb)}</li></ol></nav>`;
   const pts = PAGE.points ? `<ul class="hero-points">${PAGE.points.map((p) => `<li>${icon("checkc")}<span>${esc(p)}</span></li>`).join("")}</ul>` : "";
-  const ticker = TRUST.map((x) => `<span>${icon(x.icon)}${esc(x.text)}</span>`).join("");
+  const trust = TRUST.slice(0, 4).map((x) => `<li>${icon(x.icon)}<span>${esc(x.text)}</span></li>`).join("");
   return `
   <section class="hero" aria-labelledby="h1">
     <div class="container">
       ${crumbs}
       <div class="hero-in">
-        <div>
+        <div class="hero-tx">
           <span class="badge"><b>${esc(PAGE.badge[0])}</b>${esc(PAGE.badge[1])}</span>
           <h1 id="h1">${esc(PAGE.h1)}</h1>
           <p class="hero-lead">${esc(PAGE.lead)}</p>
           ${pts}
-          <div class="offer${promoActive() ? "" : " no-promo"}">
-            <a class="btn btn-white" href="#kontakt">${esc(T.cta.lead)}</a>
-            <p>${esc(pctText(T.heroOffer))}&nbsp;<span class="timer-inline js-timer-text">00:00:00</span></p>
+          <div class="hero-btns">
+            <a class="btn btn-primary" href="#kontakt">${esc(T.cta.lead)}${icon("arrow")}</a>
+            <a class="btn btn-line" href="tel:${esc(S.phoneHref)}">${icon("phone")}${esc(S.phone)}</a>
           </div>
         </div>
         <div id="calc"></div>
       </div>
-      <div class="trust-tick" aria-label="Kafolatlar"><div class="trust-track">${ticker}${TRUST.map((x) => `<span aria-hidden="true">${icon(x.icon)}${esc(x.text)}</span>`).join("")}</div></div>
+      <ul class="hero-trust">${trust}</ul>
     </div>
   </section>`;
 }
