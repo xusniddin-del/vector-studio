@@ -133,10 +133,10 @@ const TRUST = [
 
 /* ---------- 4. FAKTLAR (faqat haqiqiy raqamlar) ---------- */
 const FACTS = [
-  { title: "2018-yildan beri IT sohasida", text: "8 yildan ortiq amaliy dasturlash tajribasi. Saytlar, botlar, ilovalar va biznes tizimlarini o‘zimiz ishlab chiqamiz." },
-  { title: "1000+ o‘quvchiga IT o‘rgatilgan", text: "Vector platformasi va o‘quv markazida dasturlashni o‘rgatganmiz. Jamoamiz — eng yaxshi shogirdlar." },
-  { title: "7 ta tayyor tizim va dastur", text: "O‘quv markaz CRM, klinika dasturi, bog‘cha Mini App, do‘kon va sartaroshlar uchun ilovalar — hammasi o‘zimizniki." },
-  { title: "5 yillik kafolat", text: "Har bir loyihaga yozma kafolat. Bizning aybimiz bilan chiqqan xatolar 5 yil davomida bepul tuzatiladi." }
+  { num: "2018", unit: "yildan", label: "IT sohasida", text: "8 yildan ortiq amaliy dasturlash tajribasi. Saytlar, botlar, ilovalar va biznes tizimlarini o‘zimiz ishlab chiqamiz." },
+  { num: "1000+", unit: "", label: "o‘quvchiga IT o‘rgatilgan", text: "Vector platformasi va o‘quv markazida dasturlashni o‘rgatganmiz. Jamoamiz — eng yaxshi shogirdlar." },
+  { num: "7", unit: "ta", label: "tayyor tizim va dastur", text: "O‘quv markaz CRM, klinika dasturi, bog‘cha Mini App, do‘kon va sartaroshlar uchun ilovalar." },
+  { num: "5", unit: "yil", label: "kafolat", text: "Har bir loyihaga yozma kafolat. Bizning aybimiz bilan chiqqan xatolar bepul tuzatiladi." }
 ]
 
 /* ---------- 4b. NEGA BIZ (bosh sahifadagi "Bizga ishonsa bo‘ladi") ---------- */

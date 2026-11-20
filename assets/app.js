@@ -277,12 +277,11 @@ function placeholderImg(hue = 215) {
   return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
 }
 const SECTIONS = {
-  facts: () => ({ id: "biz-haqimizda", html: head(T.sections.facts) + `<div class="acc reveal">${FACTS.map((f, n) => `
-      <article class="acc-i${n === 0 ? " on" : ""}">
-        <button type="button" class="acc-t" aria-expanded="${n === 0}">${esc(f.title)}</button>
-        <span class="acc-ok" aria-hidden="true">${icon("check")}</span>
-        <p class="acc-x">${esc(f.text)}</p>
-        <span class="acc-plus" aria-hidden="true">${icon("plus")}</span>
+  facts: () => ({ id: "biz-haqimizda", html: head(T.sections.facts) + `<div class="fx">${FACTS.map((f, n) => `
+      <article class="fx-i reveal${n === 0 ? " fx-hl" : ""}">
+        <div class="fx-n">${esc(f.num)}${f.unit ? `<small>${esc(f.unit)}</small>` : ""}</div>
+        <h3>${esc(f.label)}</h3>
+        <p>${esc(f.text)}</p>
       </article>`).join("")}</div>` }),
   services: () => ({ id: "xizmatlar", html: head(T.sections.services, T.sections.servicesText) + `<div class="svc-grid">${SERVICES.map((s) => `
       <a class="svc2 reveal" href="${esc(s.page)}">

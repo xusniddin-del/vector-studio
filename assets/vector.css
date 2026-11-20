@@ -706,3 +706,19 @@ dialog::backdrop{background:rgba(7,20,51,.6)}
   :root{--container:1360px}
   body{font-size:17px}
 }
+
+/* Faktlar v3 — oddiy, silliq kartalar (sakrashsiz) */
+.fx{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+@media (max-width:1000px){.fx{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.fx{grid-template-columns:minmax(0,1fr)}}
+.fx-i{background:var(--soft);border-radius:28px;padding:32px;display:flex;flex-direction:column;gap:10px;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease,background-color .35s ease;will-change:transform}
+.fx-i:hover{transform:translateY(-6px);box-shadow:0 24px 48px -24px rgba(7,26,74,.28);background:#fff}
+.fx-i.fx-hl{background:var(--brand);color:#fff}
+.fx-i.fx-hl:hover{background:var(--brand-600)}
+.fx-n{font-size:clamp(44px,4.4vw,60px);font-weight:800;letter-spacing:-.04em;line-height:1;color:var(--brand);display:flex;align-items:baseline;gap:8px;margin-bottom:10px}
+.fx-n small{font-size:20px;font-weight:700;letter-spacing:0;opacity:.75}
+.fx-hl .fx-n{color:#fff}
+.fx-i h3{font-size:20px;line-height:1.3}
+.fx-i p{font-size:15.5px;line-height:1.6;color:var(--ink-2)}
+.fx-hl p{color:rgba(255,255,255,.85)}
+@media (prefers-reduced-motion:reduce){.fx-i,.fx-i:hover{transform:none;transition:none}}
