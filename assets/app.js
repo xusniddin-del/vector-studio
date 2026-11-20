@@ -289,8 +289,15 @@ const SECTIONS = {
         <h3>${esc(s.name)}</h3><p>${esc(s.text || "")}</p>
         <span class="chips">${(s.tags || []).map((t) => `<span>${esc(t)}</span>`).join("")}</span>
       </a>`).join("")}</div>` }),
-  problems: () => ({ html: head(PAGE.problems.title) + `<div class="grid">${PAGE.problems.items.map((p) => `<article class="card prob reveal"><span class="tile">${icon(p.icon)}</span><h3>${esc(p.title)}</h3><p>${esc(p.text)}</p></article>`).join("")}</div>` }),
-  tags: () => ({ html: head(PAGE.tags.title) + `<div class="tags reveal">${PAGE.tags.items.map((t) => `<span>${icon("checkc")}${esc(t)}</span>`).join("")}</div>` }),
+  problems: () => ({ html: head(PAGE.problems.title, T.sections.problemsSub) + `<div class="pb-stack">${PAGE.problems.items.map((p, n) => `
+      <article class="pb-card" style="--i:${n}"><div class="pb-h"><h3>${esc(p.title)}</h3><span class="pb-x" aria-hidden="true">${icon("x")}</span></div><p>${esc(p.text)}</p></article>`).join("")}</div>` }),
+  system: () => ({ html: head(SYSTEM.title, SYSTEM.text) + `<div class="sys">${SYSTEM.items.map((x, n) => `
+      <article class="sys-i reveal"><div class="sys-art" aria-hidden="true"><span class="sys-ring"></span><span class="sys-ic">${icon(x.icon)}</span><span class="sys-n">0${n + 1}</span></div><h3>${esc(x.title)}</h3><p>${esc(x.text)}</p></article>`).join("")}</div>` }),
+  tags: () => ({ html: head(PAGE.tags.title) + `<div class="tg">${PAGE.tags.items.map((t) => {
+      const [name, d] = Array.isArray(t) ? t : [t, ""];
+      return d ? `<details class="tg-i reveal"><summary><span class="tg-ic">${icon("checkc")}</span><b>${esc(name)}</b><span class="tg-ch">${icon("chev")}</span></summary><p>${esc(d)}</p></details>`
+        : `<div class="tg-i reveal"><div class="tg-s"><span class="tg-ic">${icon("checkc")}</span><b>${esc(name)}</b></div></div>`;
+    }).join("")}</div>` }),
   midcta: () => ({ html: `<div class="cta-band reveal">
       <div class="cta-band-tx"><h2>${esc(T.sections.midTitle)}</h2><p>${esc(T.sections.midText)}</p>
         <div class="cta-btns"><a class="btn btn-outline-w" href="#kontakt">${esc(T.cta.lead)}${icon("arrow")}</a>
@@ -299,20 +306,39 @@ const SECTIONS = {
     </div>` }),
   pricing: () => {
     const P = PAGE.pricing;
-    return { id: "narxlar", html: head(P.title) + `<div class="tiers">${P.tiers.map((t) => `
-      <article class="card tier reveal${t.popular ? " pop" : ""}">${t.popular ? `<span class="tag-pop">${esc(T.sections.popular)}</span>` : ""}
-        <h3>${esc(t.name)}</h3>
-        <div class="t-price">${fmt(t.price)} ${CUR}dan${t.priceTo ? `<small>${fmt(t.priceTo)} ${CUR}gacha</small>` : ""}</div>
-        <span class="t-time">${icon("clock")}${esc(t.time)}</span>
-        <ul>${t.features.map((f) => `<li>${icon("check")}${esc(f)}</li>`).join("")}</ul>
-        <button type="button" class="btn ${t.popular ? "btn-primary" : "btn-line"}" data-tier="${esc(t.name)}">${esc(T.cta.order)}</button>
+    return { id: "narxlar", html: head(P.title, T.sections.pricingSub) + `<div class="prs">${P.tiers.map((t) => `
+      <article class="pr reveal${t.popular ? " pop" : ""}">
+        <div class="pr-main">
+          <div class="pr-top"><h3>${esc(t.name)}</h3>${t.popular ? `<span class="tag-pop">${esc(T.sections.popular)}</span>` : ""}</div>
+          ${t.desc ? `<p class="pr-desc">${esc(t.desc)}</p>` : ""}
+          <ul class="pr-chips">${t.features.slice(0, 3).map((f) => `<li>${icon("check")}${esc(f)}</li>`).join("")}</ul>
+          <details class="pr-more"><summary>${esc(T.sections.includes)}<span class="tg-ch">${icon("chev")}</span></summary>
+            <div class="pr-body"><ul class="pr-list">${t.features.map((f) => `<li>${icon("checkc")}${esc(f)}</li>`).join("")}</ul>
+            <div class="pr-note">${icon("shield")}<span>${esc(T.sections.pricingNote)}</span></div></div></details>
+        </div>
+        <div class="pr-side">
+          <div class="pr-price">${fmt(t.price)} <span>${CUR}dan</span></div>
+          ${t.priceTo ? `<small class="pr-to">${fmt(t.priceTo)} ${CUR}gacha</small>` : ""}
+          <span class="pr-time">${icon("clock")}${esc(t.time)}</span>
+          <button type="button" class="btn ${t.popular ? "btn-primary" : "btn-line"}" data-order="${esc(t.name)}">${esc(T.cta.order)}</button>
+        </div>
       </article>`).join("")}</div>
-      <div class="price-note reveal"><div>${esc(T.sections.pricingNote)}</div>
-      ${P.excludes ? `<div><h3>${esc(T.sections.excludes)}</h3><ul>${P.excludes.map((x) => `<li>${icon("x")}${esc(x)}</li>`).join("")}</ul></div>` : ""}</div>` };
+      ${P.excludes ? `<div class="pr-ex reveal"><h3>${esc(T.sections.excludes)}</h3><ul>${P.excludes.map((x) => `<li>${icon("x")}${esc(x)}</li>`).join("")}</ul></div>` : ""}` };
   },
-  compare: () => ({ id: "kafolatlar", html: head(T.sections.compare) + `<div class="cmp-wrap reveal"><table class="cmp"><thead><tr><th scope="col"><span class="sr-only">Mezon</span></th><th scope="col">${esc(T.sections.compareThem)}</th><th scope="col" class="us">${esc(T.sections.compareUs)}</th></tr></thead><tbody>
-      ${COMPARE.map((r) => `<tr><td>${esc(r[0])}</td><td class="them">${icon("xc")}${esc(r[1])}</td><td class="us">${icon("checkc")}${esc(r[2])}</td></tr>`).join("")}</tbody></table></div>` }),
-  process: () => ({ html: head(T.sections.process) + `<ol class="steps" style="list-style:none;padding:0;margin:0">${PAGE.process.map((p) => `<li class="card stp reveal"><h3>${esc(p[0])}</h3><p>${esc(p[1])}</p></li>`).join("")}</ol>` }),
+  benefits: () => ({ html: head(BENEFITS.title) + `<div class="bn">${BENEFITS.items.map((b) => `
+      <div class="bn-i reveal"><span class="bn-ic">${icon(b.icon)}</span><h3>${esc(b.title)}</h3><p>${esc(b.text)}</p></div>`).join("")}</div>` }),
+  compare: () => ({ id: "kafolatlar", html: head(T.sections.compare) + `<div class="vs">
+      ${[["them", T.sections.compareThem, 1, "xc"], ["us", T.sections.compareUs, 2, "checkc"]].map(([k, h, i, ic]) => `
+      <div class="vs-col vs-${k} reveal"><div class="vs-h">${k === "us" ? LOGO : ""}<b>${esc(h)}</b></div>
+        ${COMPARE.map((r) => `<div class="vs-r"><small>${esc(r[0])}</small><p>${icon(ic)}<span>${esc(r[i])}</span></p></div>`).join("")}</div>`).join("")}
+    </div>` }),
+  process: () => ({ id: "bosqichlar", html: `<div class="pc">
+      <div class="pc-l reveal"><h2>${esc(PAGE.processTitle || T.sections.process)}</h2><p>${esc(T.sections.processText)}</p>
+        <div class="pc-nav"><button type="button" class="pc-b" data-pc="-1" aria-label="Oldingi bosqich">${icon("back")}</button><button type="button" class="pc-b" data-pc="1" aria-label="Keyingi bosqich">${icon("arrow")}</button></div></div>
+      <ol class="pc-track" tabindex="0" aria-label="${esc(T.sections.process)}">${PAGE.process.map((p, n) => `
+        <li class="pc-c"><span class="pc-n">${String(n + 1).padStart(2, "0")}</span><h3>${esc(p[0])}</h3><p>${esc(p[1])}</p>
+        ${p[2] ? `<div class="pc-get"><small>${esc(T.sections.youGet)}</small><b>${esc(p[2])}</b></div>` : ""}</li>`).join("")}</ol>
+    </div>` }),
   portfolio: () => {
     const items = PORTFOLIO.filter((p) => p.kinds.includes(PAGE_ID)).slice(0, 8);
     if (!items.length) return null;
@@ -414,6 +440,16 @@ function footerHTML() {
       <a class="ph" href="tel:${esc(S.phoneHref)}">${icon("phone")}${esc(T.cta.call)}</a>
     </div>
     <button type="button" class="fab-main" id="fab" aria-expanded="false" aria-controls="fab-list" aria-label="Biz bilan bog‘lanish">${icon("bubble")}</button></div>
+  <dialog id="order-dlg" aria-labelledby="o-h"><div class="dlg-head"><h2 id="o-h">${esc(T.cta.lead)}</h2><button class="x" type="button" data-close aria-label="${esc(T.cta.close)}">${icon("x")}</button></div>
+    <form class="dlg-body o-form" id="order-form" novalidate>
+      <p class="o-tier" id="o-tier"></p>
+      <div class="field"><label class="sr-only" for="o-name">${esc(T.form.name)}</label><input class="input" id="o-name" name="name" autocomplete="name" placeholder="${esc(T.form.name)}" aria-describedby="o-nerr"><span class="err" id="o-nerr"></span></div>
+      <div class="field"><label class="sr-only" for="o-phone">${esc(T.form.phone)}</label>${telHTML("o")}</div>
+      <div class="hp" aria-hidden="true"><label for="o-web">${esc(T.form.honeypot)}</label><input id="o-web" name="website" tabindex="-1" autocomplete="off"></div>
+      ${consentHTML("o")}
+      <button type="submit" class="btn btn-primary">${esc(T.form.submit)}</button>
+      <div class="form-msg" role="status" aria-live="polite"></div>
+    </form></dialog>
   ${["privacy", "terms"].map((k) => `<dialog id="${k}-dlg" aria-labelledby="${k}-h"><div class="dlg-head"><h2 id="${k}-h">${esc(T.legal[k + "Title"])}</h2><button class="x" type="button" data-close aria-label="${esc(T.cta.close)}">${icon("x")}</button></div>
     <div class="dlg-body">${T.legal[k].map((p) => `<p>${esc(p.replace("{telegram}", S.telegramHandle || S.telegram).replace("{hours}", S.promo.hours))}</p>`).join("")}</div></dialog>`).join("")}`;
 }
@@ -498,6 +534,41 @@ function setupContact() {
     const payload = { ...basePayload(form, "kontakt: " + PAGE_ID), message: form.elements.message.value.trim() };
     submitFlow(form, $("button[type=submit]", form), payload, () => { form.reset(); store.del(key); });
   });
+}
+
+function setupOrder() {
+  const dlg = $("#order-dlg"), form = $("#order-form");
+  if (!dlg) return;
+  let tier = "";
+  setupPhone(form.elements.phone);
+  form.addEventListener("input", (e) => clearErr(e.target));
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-order]"); if (!b) return;
+    e.preventDefault();
+    tier = b.dataset.order;
+    $("#o-tier").textContent = `${PAGE.crumb || ""} · ${tier}`;
+    $(".form-msg", form).className = "form-msg"; $(".form-msg", form).textContent = "";
+    form.hidden = false; $("button[type=submit]", form).hidden = false;
+    dlg.showModal ? dlg.showModal() : dlg.setAttribute("open", "");
+    setTimeout(() => form.elements.name.focus(), 50);
+  });
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (!validate(form, "o")) return;
+    const payload = { ...basePayload(form, "tarif: " + PAGE_ID), message: `Tarif: ${tier} (${PAGE.crumb || ""})` };
+    submitFlow(form, $("button[type=submit]", form), payload, () => {
+      const m = $(".form-msg", form).textContent;
+      form.reset(); $(".form-msg", form).textContent = m; $(".form-msg", form).className = "form-msg ok";
+      setTimeout(() => dlg.open && dlg.close(), 3500);
+    });
+  });
+}
+function setupProcess() {
+  const tr = $(".pc-track"); if (!tr) return;
+  $$("[data-pc]").forEach((b) => b.addEventListener("click", () => {
+    const c = $(".pc-c", tr); const w = c ? c.getBoundingClientRect().width + 20 : 320;
+    tr.scrollBy({ left: w * Number(b.dataset.pc), behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+  }));
 }
 
 /* ---------- 10. INTERAKTIVLIK ---------- */
@@ -599,5 +670,5 @@ function setupReveal() {
     </div></main>${footerHTML()}`;
   document.body.insertAdjacentHTML("afterbegin", html);
   renderCalc(false);
-  setupHeader(); setupTimers(); setupContact(); setupMisc(); setupAcc(); setupSlides(); setupReveal();
+  setupHeader(); setupTimers(); setupContact(); setupMisc(); setupAcc(); setupSlides(); setupOrder(); setupProcess(); setupReveal();
 })();

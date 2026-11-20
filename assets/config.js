@@ -80,15 +80,19 @@ const TEXTS = {
     industries: "Istalgan soha uchun yechim yaratamiz",
     industriesText: "Har bir sohaning ish jarayonini tushunamiz va tayyor yechimlardan boshlaymiz.",
     trust: "Bizga ishonishingiz mumkin",
-    compare: "Oddiy studiya va Vector Studio",
-    compareThem: "Ko‘p studiya va frilanserlarda",
-    compareUs: "Vector Studio’da",
+    compare: "Keling, taqqoslaymiz",
+    problemsSub: "Bizga kelgan murojaatlarning aksariyati shu muammolardan boshlanadi.",
+    pricingSub: "Narx ish boshlanishidan oldin yozma kelishiladi va keyin o‘zgarmaydi.",
+    processText: "Har bir bosqich oxirida natijani ko‘rasiz va tasdiqlaysiz — keyin keyingisiga o‘tamiz.",
+    youGet: "Siz olasiz",
+    compareThem: "Oddiy studiya yoki frilanser",
+    compareUs: "Vector Studio bilan",
     process: "Qanday ishlaymiz",
     faq: "Ko‘p beriladigan savollar",
     other: "Boshqa xizmatlar",
     popular: "Ommabop",
     time: "Muddat",
-    includes: "Narxga kiradi",
+    includes: "Nimalar kiradi",
     excludes: "Narxga kirmaydi",
     pricingNote: "Ishga tushirgandan keyin 3 oy texnik yordam bepul. To‘lov 2 bosqichda: 50% oldindan, 50% ish topshirilgandan keyin.",
     midTitle: "Loyihangizni muhokama qilishga tayyormisiz?",
@@ -185,6 +189,29 @@ const PORTFOLIO = [
 ]
 
 /* ---------- 8. TAQQOSLASH JADVALI ---------- */
+/* Webnum uslubidagi umumiy bo‘limlar (xizmat sahifalari) */
+const SYSTEM = {
+  title: "Siz uchun ishlaydigan tizim yaratamiz",
+  text: "Chiroyli ko‘rinish yetarli emas — loyiha har kuni mijoz olib kelishi va vaqtingizni tejashi kerak.",
+  items: [
+    { icon: "trend", title: "Mijoz oqimi", text: "Qidiruv, reklama va ijtimoiy tarmoqlardan kelgan odam tushunarli taklifni ko‘radi va bir bosishda ariza qoldiradi." },
+    { icon: "bell", title: "Hech bir ariza yo‘qolmaydi", text: "Har bir ariza darhol Telegram’ingizga keladi — ism, telefon va nima kerakligi bilan." },
+    { icon: "layers", title: "O‘zingiz boshqarasiz", text: "Matn, narx va rasmlarni admin paneldan dasturchisiz o‘zgartirasiz. Kod va domen sizniki." }
+  ]
+};
+const BENEFITS = {
+  title: "Ishga tushgach nimalarga ega bo‘lasiz",
+  items: [
+    { icon: "shield", title: "5 yillik kafolat", text: "Bizning xatomiz bo‘lsa — bepul tuzatamiz" },
+    { icon: "telegram", title: "Arizalar Telegram’ga", text: "Har bir murojaat darhol telefoningizda" },
+    { icon: "layers", title: "Admin panel", text: "Kontentni o‘zingiz tahrirlaysiz" },
+    { icon: "headset", title: "3 oy bepul yordam", text: "Savol va tuzatishlar — to‘lovsiz" },
+    { icon: "key", title: "Kod va domen sizniki", text: "Barcha kirishlar sizga topshiriladi" },
+    { icon: "clock", title: "Tez yuklanish", text: "Telefonda ham bir zumda ochiladi" },
+    { icon: "search", title: "Asosiy SEO", text: "Google va Yandex’da chiqishga tayyor" },
+    { icon: "edu", title: "O‘rgatamiz", text: "Tizimda ishlashni ko‘rsatib beramiz" }
+  ]
+};
 const COMPARE = [
   ["Narx", "Ish davomida oshib borishi mumkin", "Ish boshlanishidan oldin kelishiladi va o‘zgarmaydi"],
   ["To‘lov", "Ko‘pincha 70–100% oldindan", "50% oldindan, 50% — ish topshirilgandan keyin"],
@@ -239,6 +266,7 @@ const PAGES = {
     title: "Sayt yaratish xizmati — Vector Studio, Marg‘ilon",
     crumb: "Saytlar ishlab chiqish",
     service: "sayt",
+    processTitle: "Sayt yaratish bosqichlari",
     badge: ["WEB", "sayt yaratish xizmati"],
     h1: "Sayt yaratish xizmati O‘zbekistonda",
     lead: "Mijoz olib keladigan sayt: noldan dizayn, birinchi kundan SEO va 5 yillik kafolat. Narx ish boshlanishidan oldin kelishiladi.",
@@ -258,22 +286,22 @@ const PAGES = {
       { icon: "clock", title: "Eski sayt mijozni qochiradi", text: "Telefonda sekin ochiladigan yoki eskirgan sayt ishonchni pasaytiradi." },
       { icon: "handshake", title: "Hamkorlar kamroq ishonadi", text: "Jiddiy mijozlar va hamkorlar avval saytingizni tekshiradi." }
     ] },
-    tags: { title: "Qanday saytlar qilamiz", items: ["Vizitka sayt", "Landing", "Korporativ sayt", "Katalog sayt", "Internet-do‘kon", "Ta’lim platformasi", "Shaxsiy kabinet", "Web-ilova (SPA)", "Startap MVP", "Redizayn", "Konstruktordan ko‘chirish", "SEO-optimizatsiya", "Qo‘llab-quvvatlash"] },
+    tags: { title: "Qanday saytlar yaratamiz", items: [["Vizitka sayt", "Kompaniya, xizmatlar, narxlar va kontaktlar — 5 sahifagacha. Kichik biznes uchun ishonchli birinchi qadam."], ["Landing", "Bitta xizmat yoki reklama uchun bitta sahifa: taklif, afzalliklar va ariza formasi. Arizalar darhol Telegram’ga keladi."], ["Korporativ sayt", "Ko‘p sahifali sayt: kompaniya, xizmatlar, loyihalar, blog, ikki til va admin panel."], ["Katalog sayt", "Mahsulotlar filtr va kategoriyalar bilan, savatsiz — mijoz tanlaydi va ariza qoldiradi."], ["Internet-do‘kon", "Katalog, savat, Click / Payme to‘lov va buyurtmalar paneli. Har bir buyurtma Telegram’ga xabar bo‘lib keladi."], ["Ta’lim platformasi", "Kurslar, darslar, test va o‘quvchi kabineti. O‘quv markazlar va onlayn kurslar uchun."], ["Web-ilova va kabinet", "Mijoz yoki xodim uchun shaxsiy kabinet, rollar va hisobotlar — brauzerda ishlaydigan tizim."], ["Redizayn", "Eski saytni zamonaviy, tez va mobilga mos qilib qayta yaratamiz — mavjud SEO pozitsiyalarni saqlagan holda."], ["SEO va qo‘llab-quvvatlash", "Google’da chiqish uchun texnik SEO, tezlik, analitika. Ishga tushgach 3 oy bepul yordam."]] },
     pricing: { title: "Sayt yaratish narxi — 1,5 mln so‘mdan", tiers: [
-      { name: "Vizitka sayt", price: 1500000, time: "5 ish kunidan", features: ["5 sahifagacha", "Individual dizayn", "Kontakt forma va xarita", "Mobilga moslashuv", "Asosiy SEO va analitika", "SSL sertifikat"] },
-      { name: "Landing", price: 2500000, time: "7 ish kunidan", features: ["8 tagacha blok", "Arizalar Telegram’ga", "Kalkulyator yoki quiz", "Reklama piksellari", "Mobilga moslashuv", "Asosiy SEO"] },
-      { name: "Korporativ sayt", price: 5000000, time: "14 ish kunidan", popular: true, features: ["10–30 sahifa", "O‘zbek va rus tilida", "Admin panel", "Blog va loyihalar", "CRM yoki bot bilan bog‘lash", "Asosiy SEO va analitika"] },
-      { name: "Internet-do‘kon", price: 9000000, priceTo: 15000000, time: "21 ish kunidan", features: ["Katalog, filtr, savat", "Click / Payme to‘lov", "Buyurtmalar paneli", "Excel’dan mahsulot importi", "Promokodlar", "Telegram’ga buyurtma xabari"] }
+      { name: "Vizitka sayt", desc: "Kichik biznes va mutaxassislar uchun ixcham, ishonchli sayt.", price: 1500000, time: "5 ish kunidan", features: ["5 sahifagacha", "Individual dizayn", "Kontakt forma va xarita", "Mobilga moslashuv", "Asosiy SEO va analitika", "SSL sertifikat"] },
+      { name: "Landing", desc: "Reklama va bitta xizmat uchun arizaga yo‘naltirilgan sahifa.", price: 2500000, time: "7 ish kunidan", features: ["8 tagacha blok", "Arizalar Telegram’ga", "Kalkulyator yoki quiz", "Reklama piksellari", "Mobilga moslashuv", "Asosiy SEO"] },
+      { name: "Korporativ sayt", desc: "Kompaniya, xizmatlar va loyihalar — admin panel bilan to‘liq sayt.", price: 5000000, time: "14 ish kunidan", popular: true, features: ["10–30 sahifa", "O‘zbek va rus tilida", "Admin panel", "Blog va loyihalar", "CRM yoki bot bilan bog‘lash", "Asosiy SEO va analitika"] },
+      { name: "Internet-do‘kon", desc: "Onlayn savdo uchun: katalog, savat, to‘lov va buyurtmalar.", price: 9000000, priceTo: 15000000, time: "21 ish kunidan", features: ["Katalog, filtr, savat", "Click / Payme to‘lov", "Buyurtmalar paneli", "Excel’dan mahsulot importi", "Promokodlar", "Telegram’ga buyurtma xabari"] }
     ], excludes: ["Domen va hosting to‘lovi (yiliga)", "Pullik reklama byudjeti", "Matn va rasmlarni noldan tayyorlash (alohida kelishiladi)"] },
     process: [
-      ["Brif va smeta", "Bepul suhbat, vazifani aniqlaymiz. Narx va muddatni yozma beramiz."],
-      ["Struktura va prototip", "Sahifalar xaritasi va prototip — siz tasdiqlaguningizcha."],
-      ["Dizayn va dasturlash", "Sinov havolasida jarayonni ko‘rib, fikr bildirib borasiz."],
-      ["Admin panel va kontent", "Matn va rasmlarni joylaymiz, panelda ishlashni o‘rgatamiz."],
-      ["Test", "Telefon, planshet va kompyuterda tekshiramiz."],
-      ["Ishga tushirish", "Domen, SSL, analitika. 3 oy bepul yordam boshlanadi."]
+      ["Brif va smeta", "Bepul suhbat, vazifani aniqlaymiz. Narx va muddatni yozma beramiz.", "Yozma smeta va muddat"],
+      ["Struktura va prototip", "Sahifalar xaritasi va prototip — siz tasdiqlaguningizcha.", "Tasdiqlangan prototip"],
+      ["Dizayn va dasturlash", "Sinov havolasida jarayonni ko‘rib, fikr bildirib borasiz.", "Ishlab turgan sinov versiya"],
+      ["Admin panel va kontent", "Matn va rasmlarni joylaymiz, panelda ishlashni o‘rgatamiz.", "To‘ldirilgan sayt va panel"],
+      ["Test", "Telefon, planshet va kompyuterda tekshiramiz.", "Xatosiz ishlaydigan tizim"],
+      ["Ishga tushirish", "Domen, SSL, analitika. 3 oy bepul yordam boshlanadi.", "Ishlab turgan loyiha va 3 oy yordam"]
     ],
-    sections: ["facts", "problems", "tags", "midcta", "pricing", "compare", "process", "portfolio", "faq", "industries", "other"],
+    sections: ["problems", "system", "tags", "midcta", "pricing", "benefits", "compare", "portfolio", "process", "faq", "industries", "other"],
     faq: [
       ["Sayt yaratish qancha turadi?", "Vizitka sayt 1,5 mln so‘mdan, internet-do‘kon 9 mln so‘mdan boshlanadi. Aniq narx sahifalar soni va funksiyalarga bog‘liq — bepul suhbatdan keyin yozma beramiz."],
       ["Qancha vaqtda tayyor bo‘ladi?", "Vizitka va landing — 1–2 hafta, korporativ sayt va do‘kon — 3–5 hafta. Muddat kelishuvda yoziladi."],
@@ -288,6 +316,7 @@ const PAGES = {
     title: "Mobil ilova yaratish xizmati — Vector Studio",
     crumb: "Mobil ilovalar",
     service: "ilova",
+    processTitle: "Ilova yaratish bosqichlari",
     badge: ["APP", "mobil ilova yaratish"],
     h1: "Mobil ilova yaratish xizmati",
     lead: "Android va iPhone uchun ilova yoki do‘konsiz o‘rnatiladigan web-ilova. Narx oldindan kelishiladi, kod va akkauntlar sizniki, 5 yillik kafolat.",
@@ -309,20 +338,20 @@ const PAGES = {
       { icon: "bell", title: "Mijozga eslatib bo‘lmaydi", text: "Push-xabar orqali aksiya va yangiliklarni bevosita yetkazasiz." },
       { icon: "star", title: "Sadoqat dasturi yo‘q", text: "Bonus va keshbek mijozni qayta-qayta qaytaradi." }
     ] },
-    tags: { title: "Qanday ilovalar qilamiz", items: ["Internet-do‘kon", "Yetkazib berish", "Yozilish va bron", "Sadoqat dasturi", "Restoran ilovasi", "Ta’lim ilovasi", "Xodimlar uchun ilova", "Ombor va savdo hisobi", "Startap MVP", "Web-ilova (PWA)", "Dizayn ishlab chiqish", "Qo‘llab-quvvatlash"] },
+    tags: { title: "Qanday ilovalar yaratamiz", items: [["Internet-do‘kon ilovasi", "Katalog, savat, to‘lov va buyurtma holati — mijoz telefonidan bir necha bosishda xarid qiladi."], ["Yetkazib berish", "Mijoz, kuryer va operator ekranlari, xarita va buyurtma holati real vaqtda."], ["Yozilish va bron", "Xizmat, usta va vaqtni tanlash, eslatma xabarlari — saloon, klinika va markazlar uchun."], ["Sadoqat dasturi", "Bonuslar, keshbek va shaxsiy takliflar — mijoz qayta-qayta qaytib keladi."], ["Ta’lim ilovasi", "Darslar, davomat, baholar va uy vazifalari — o‘quvchi, ota-ona va ustoz uchun."], ["Xodimlar uchun ilova", "Vazifalar, hisobotlar va ichki ish jarayoni — jamoa telefonidan ishlaydi."], ["Ombor va savdo hisobi", "Kirim-chiqim, qoldiq, nasiya va kunlik tushum — do‘kon egasi uchun."], ["Startap MVP", "G‘oyani tez sinash uchun asosiy funksiyalar bilan birinchi versiya — keyin bosqichma-bosqich o‘stiramiz."], ["Web-ilova (PWA)", "Do‘konlarsiz telefonga o‘rnatiladigan ilova — tejamkor va tez ishga tushadi."]] },
     pricing: { title: "Ilova narxi — 3 mln so‘mdan", tiers: [
-      { name: "Web-ilova / MVP", price: 3000000, time: "14 ish kunidan", features: ["5–7 ekran", "Telefonga o‘rnatiladi", "Oflayn rejim", "Telefon raqami orqali kirish", "Analitika", "Asosiy funksiyalar"] },
-      { name: "Biznes ilova", price: 6000000, time: "21 ish kunidan", popular: true, features: ["Android + iOS", "Admin panel", "Rollar va shaxsiy kabinet", "Push-bildirishnomalar", "Excel’ga eksport", "O‘zbek va rus tilida"] },
-      { name: "Do‘kon va yetkazish", price: 9000000, priceTo: 12000000, time: "30 ish kunidan", features: ["Katalog va savat", "Click / Payme to‘lov", "Kuryer ekrani", "Xarita va manzil", "Buyurtmalar paneli", "Do‘konlarga joylash"] }
+      { name: "Web-ilova / MVP", desc: "G‘oyani tez va arzon sinash uchun telefonga o‘rnatiladigan ilova.", price: 3000000, time: "14 ish kunidan", features: ["5–7 ekran", "Telefonga o‘rnatiladi", "Oflayn rejim", "Telefon raqami orqali kirish", "Analitika", "Asosiy funksiyalar"] },
+      { name: "Biznes ilova", desc: "Android va iOS uchun to‘liq ilova — admin panel va kabinet bilan.", price: 6000000, time: "21 ish kunidan", popular: true, features: ["Android + iOS", "Admin panel", "Rollar va shaxsiy kabinet", "Push-bildirishnomalar", "Excel’ga eksport", "O‘zbek va rus tilida"] },
+      { name: "Do‘kon va yetkazish", desc: "Savdo va yetkazib berish uchun mijoz, kuryer va admin ekranlari.", price: 9000000, priceTo: 12000000, time: "30 ish kunidan", features: ["Katalog va savat", "Click / Payme to‘lov", "Kuryer ekrani", "Xarita va manzil", "Buyurtmalar paneli", "Do‘konlarga joylash"] }
     ], excludes: ["Google Play / App Store akkaunt to‘lovi", "Server (hosting) to‘lovi", "To‘lov tizimlari komissiyasi"] },
     process: [
-      ["Brif va smeta", "Bitta onlayn suhbat, keyin qat’iy narx va muddat yozma."],
-      ["Dizayn", "Ekranlar va bosiladigan prototip — siz tasdiqlaysiz."],
-      ["Dasturlash", "Android va iOS uchun bitta kod. Har hafta jonli demo."],
-      ["Test", "Haqiqiy telefonlarda sinab chiqamiz."],
-      ["Joylash va yordam", "Do‘konlarga joylaymiz, 3 oy bepul yordam."]
+      ["Brif va smeta", "Bitta onlayn suhbat, keyin qat’iy narx va muddat yozma.", "Yozma smeta va muddat"],
+      ["Dizayn", "Ekranlar va bosiladigan prototip — siz tasdiqlaysiz.", "Bosiladigan prototip"],
+      ["Dasturlash", "Android va iOS uchun bitta kod. Har hafta jonli demo.", "Har hafta jonli natija"],
+      ["Test", "Haqiqiy telefonlarda sinab chiqamiz.", "Xatosiz ishlaydigan tizim"],
+      ["Joylash va yordam", "Do‘konlarga joylaymiz, 3 oy bepul yordam.", "Do‘konlardagi ilova va 3 oy yordam"]
     ],
-    sections: ["facts", "problems", "tags", "midcta", "pricing", "compare", "process", "portfolio", "faq", "industries", "other"],
+    sections: ["problems", "system", "tags", "midcta", "pricing", "benefits", "compare", "portfolio", "process", "faq", "industries", "other"],
     faq: [
       ["Ilova qancha turadi?", "Web-ilova va MVP 3 mln so‘mdan, do‘kon va yetkazish ilovasi 9 mln so‘mdan. Aniq narx ekranlar va funksiyalar soniga bog‘liq."],
       ["Web-ilova bilan oddiy ilovaning farqi nima?", "Web-ilova do‘konsiz, havola orqali telefonga o‘rnatiladi va arzonroq. Oddiy ilova Google Play va App Store’da bo‘ladi."],
@@ -336,6 +365,7 @@ const PAGES = {
     title: "Telegram bot yaratish — Vector Studio, Marg‘ilon",
     crumb: "Telegram botlar",
     service: "bot",
+    processTitle: "Bot yaratish bosqichlari",
     badge: ["BOT", "Telegram bot yaratish"],
     h1: "Telegram bot yaratish xizmati",
     lead: "Bot tunda ham ariza va yozilishlarni qabul qiladi, Click/Payme orqali sotadi va mijozlarga javob beradi. Narx oldindan kelishiladi, 5 yillik kafolat.",
@@ -355,22 +385,22 @@ const PAGES = {
       { icon: "card", title: "To‘lovni qo‘lda tekshirish", text: "Click/Payme orqali to‘lov bot ichida avtomatik tasdiqlanadi." },
       { icon: "users", title: "Mijozlar bazasi yo‘q", text: "Bot har bir mijozni saqlaydi — keyin xabar tarqatish mumkin." }
     ] },
-    tags: { title: "Qanday botlar qilamiz", items: ["Ariza boti", "Qabulga yozilish", "Do‘kon boti", "Yetkazib berish", "Telegram Mini App", "O‘quv markaz boti", "Bog‘cha boti", "Sartaroshxona boti", "Xabar tarqatish", "Google Sheets bilan bog‘lash", "CRM bilan bog‘lash", "Admin panel"] },
+    tags: { title: "Qanday botlar yaratamiz", items: [["Ariza boti", "Mijoz savollarga javob beradi, ariza to‘liq holda sizga yoki guruhga keladi."], ["Qabulga yozilish", "Xizmat, usta va bo‘sh vaqtni tanlash, avtomatik eslatmalar — telefon qo‘ng‘iroqlarisiz."], ["Do‘kon boti", "Katalog, savat, to‘lov va yetkazib berish manzili — savdo Telegram ichida."], ["Telegram Mini App", "Telegram ichida ochiladigan ilovadek interfeys: kabinet, bonus va katalog — o‘rnatishsiz."], ["O‘quv markaz boti", "Kursga yozilish, davomat va to‘lov eslatmalari — ota-onalar bilan aloqa avtomatik."], ["Bog‘cha boti", "Ota-onaga davomat, menyu va to‘lov haqida xabar — tarbiyachi vaqtini tejaydi."], ["Xabar tarqatish", "Barcha mijozlarga aksiya va yangiliklarni bir bosishda yuborish."], ["Sheets va CRM bilan bog‘lash", "Arizalar avtomatik Google Sheets yoki CRM’ga tushadi — hech narsa yo‘qolmaydi."], ["Admin panel", "Matn, katalog va narxlarni dasturchisiz o‘zingiz o‘zgartirasiz, statistikani ko‘rasiz."]] },
     pricing: { title: "Telegram bot narxi — 500 ming so‘mdan", tiers: [
-      { name: "Oddiy bot", price: 500000, time: "3 ish kunidan", features: ["Menyu va tugmalar", "Ariza qabul qilish", "Arizalar guruh yoki Sheets’ga", "O‘zbek va rus tilida"] },
-      { name: "Yozilish boti", price: 1200000, time: "5 ish kunidan", features: ["Xizmat va vaqt tanlash", "Eslatma xabarlari", "Admin uchun jadval", "Mijozlar bazasi", "Xabar tarqatish"] },
-      { name: "Do‘kon boti", price: 2000000, time: "10 ish kunidan", popular: true, features: ["Katalog va savat", "Click / Payme to‘lov", "Yetkazib berish manzili", "Buyurtmalar paneli", "Statistika"] },
-      { name: "Telegram Mini App", price: 3000000, priceTo: 3500000, time: "15 ish kunidan", features: ["Ilovadek interfeys", "Shaxsiy kabinet", "Bonuslar", "Admin panel", "O‘rnatishsiz ishlaydi"] }
+      { name: "Oddiy bot", desc: "Menyu, savol-javob va arizalarni qabul qiluvchi bot.", price: 500000, time: "3 ish kunidan", features: ["Menyu va tugmalar", "Ariza qabul qilish", "Arizalar guruh yoki Sheets’ga", "O‘zbek va rus tilida"] },
+      { name: "Yozilish boti", desc: "Mijozlar o‘zi vaqt tanlab yoziladi, bot eslatib turadi.", price: 1200000, time: "5 ish kunidan", features: ["Xizmat va vaqt tanlash", "Eslatma xabarlari", "Admin uchun jadval", "Mijozlar bazasi", "Xabar tarqatish"] },
+      { name: "Do‘kon boti", desc: "Telegram ichida savdo: katalog, savat va onlayn to‘lov.", price: 2000000, time: "10 ish kunidan", popular: true, features: ["Katalog va savat", "Click / Payme to‘lov", "Yetkazib berish manzili", "Buyurtmalar paneli", "Statistika"] },
+      { name: "Telegram Mini App", desc: "Telegram ichida ochiladigan to‘liq ilova interfeysi.", price: 3000000, priceTo: 3500000, time: "15 ish kunidan", features: ["Ilovadek interfeys", "Shaxsiy kabinet", "Bonuslar", "Admin panel", "O‘rnatishsiz ishlaydi"] }
     ], excludes: ["Server (hosting) to‘lovi", "To‘lov tizimlari komissiyasi"] },
     process: [
-      ["Brif va ssenariy", "Botning ish sxemasini chizamiz, narx va muddat yozma."],
-      ["Prototip", "Test bot yoki Mini App ekranlari."],
-      ["Dasturlash", "Har 3–5 kunda natijani ko‘rsatib boramiz."],
-      ["To‘ldirish", "Katalog, matnlar va admin panelni sozlaymiz."],
-      ["Test", "Barcha tugma va ssenariylarni tekshiramiz."],
-      ["Ishga tushirish", "Server va tokenni topshiramiz, 3 oy bepul yordam."]
+      ["Brif va ssenariy", "Botning ish sxemasini chizamiz, narx va muddat yozma.", "Bot sxemasi, narx va muddat"],
+      ["Prototip", "Test bot yoki Mini App ekranlari.", "Tasdiqlangan ekranlar"],
+      ["Dasturlash", "Har 3–5 kunda natijani ko‘rsatib boramiz.", "Har hafta jonli natija"],
+      ["To‘ldirish", "Katalog, matnlar va admin panelni sozlaymiz.", "Sozlangan katalog va panel"],
+      ["Test", "Barcha tugma va ssenariylarni tekshiramiz.", "Xatosiz ishlaydigan tizim"],
+      ["Ishga tushirish", "Server va tokenni topshiramiz, 3 oy bepul yordam.", "Ishlab turgan loyiha va 3 oy yordam"]
     ],
-    sections: ["facts", "problems", "tags", "midcta", "pricing", "compare", "process", "portfolio", "faq", "industries", "other"],
+    sections: ["problems", "system", "tags", "midcta", "pricing", "benefits", "compare", "portfolio", "process", "faq", "industries", "other"],
     faq: [
       ["Telegram bot qancha turadi?", "Oddiy bot 500 ming so‘mdan, do‘kon boti 2 mln so‘mdan, Mini App 3 mln so‘mdan. Aniq narx ssenariyga bog‘liq."],
       ["Bot va Mini App farqi nima?", "Bot — tugma va xabarlar orqali ishlaydi. Mini App — Telegram ichida ochiladigan to‘liq ilova ko‘rinishidagi interfeys."],
@@ -385,6 +415,7 @@ const PAGES = {
     title: "CRM tizim yaratish — Vector Studio",
     crumb: "CRM tizimlar",
     service: "crm",
+    processTitle: "CRM joriy etish bosqichlari",
     badge: ["CRM", "biznesingiz uchun"],
     h1: "Biznesingiz uchun CRM yaratamiz",
     lead: "Shablonsiz, sizning qoidalaringiz bo‘yicha. Oylik obuna va har bir xodim uchun to‘lov yo‘q — tizim, kod va baza sizniki.",
@@ -405,21 +436,21 @@ const PAGES = {
       { icon: "trend", title: "Obuna har yili qimmatlashadi", text: "Tayyor CRM’larda har bir xodim uchun oylik to‘lov." },
       { icon: "layers", title: "Jarayoningizga mos emas", text: "Shablon voronka sizning bosqichlaringizni hisobga olmaydi." }
     ] },
-    tags: { title: "CRM ichida nima bo‘ladi", items: ["Mijozlar bazasi", "Bitimlar voronkasi", "To‘lov va qarzdorlik", "Ombor qoldig‘i", "Xodimlar va rollar", "Hisobotlar", "Telegram bot", "Click / Payme", "Excel’dan import", "SMS va eslatmalar", "Filiallar", "Hujjat shablonlari"] },
+    tags: { title: "CRM ichida nimalar bo‘ladi", items: [["Mijozlar bazasi", "Har bir mijoz tarixi, xaridlari va izohlari bitta kartochkada."], ["Bitimlar voronkasi", "Ariza qaysi bosqichda ekanini ko‘rasiz — birorta mijoz e’tibordan chetda qolmaydi."], ["To‘lov va qarzdorlik", "Kim qancha to‘lagan va kim qarzdor — eslatmalar bilan avtomatik."], ["Ombor qoldig‘i", "Kirim, chiqim va qoldiq real vaqtda; kam qolgan mahsulot haqida ogohlantirish."], ["Xodimlar va rollar", "Rahbar, menejer, kassir — har kim faqat o‘ziga kerakli bo‘limni ko‘radi."], ["Hisobotlar", "Tushum, sotuv va xodimlar samaradorligi — kunlik va oylik hisobotlar."], ["Telegram bot", "Rahbarga kunlik hisobot, mijozlarga eslatma — CRM bilan bog‘langan bot."], ["Click / Payme", "Onlayn to‘lovlar avtomatik qabul qilinadi va bazaga yoziladi."], ["Excel’dan import", "Mavjud bazangizni Excel yoki eski tizimdan yo‘qotishsiz ko‘chiramiz."]] },
     pricing: { title: "CRM narxi — 3 mln so‘mdan, bir martalik", tiers: [
-      { name: "Boshlang‘ich", price: 3000000, time: "10 ish kunidan", features: ["Bitta bo‘lim", "Mijozlar va arizalar", "To‘lovlar", "Oddiy hisobot", "Excel’dan import"] },
-      { name: "Biznes", price: 8000000, time: "20 ish kunidan", popular: true, features: ["Ombor va qarzdorlik", "Rollar: rahbar, menejer, kassir", "Telegram bot", "Hujjat shablonlari", "Kengaytirilgan hisobotlar"] },
-      { name: "Butun kompaniya", price: 15000000, priceTo: 20000000, time: "30 ish kunidan", features: ["Filiallar", "Ishlab chiqarish / yetkazish", "Telefondan ishlash", "Integratsiyalar (API)", "Xodimlarni o‘qitish"] }
+      { name: "Boshlang‘ich", desc: "Bitta bo‘lim uchun: mijozlar, arizalar va to‘lovlar hisobi.", price: 3000000, time: "10 ish kunidan", features: ["Bitta bo‘lim", "Mijozlar va arizalar", "To‘lovlar", "Oddiy hisobot", "Excel’dan import"] },
+      { name: "Biznes", desc: "Savdo, ombor va qarzdorlik — butun jamoa bitta tizimda.", price: 8000000, time: "20 ish kunidan", popular: true, features: ["Ombor va qarzdorlik", "Rollar: rahbar, menejer, kassir", "Telegram bot", "Hujjat shablonlari", "Kengaytirilgan hisobotlar"] },
+      { name: "Butun kompaniya", desc: "Filiallar, ishlab chiqarish va integratsiyalar bilan to‘liq tizim.", price: 15000000, priceTo: 20000000, time: "30 ish kunidan", features: ["Filiallar", "Ishlab chiqarish / yetkazish", "Telefondan ishlash", "Integratsiyalar (API)", "Xodimlarni o‘qitish"] }
     ], excludes: ["Server (hosting) to‘lovi", "SMS va telefoniya xizmatlari to‘lovi"] },
     process: [
-      ["Bepul tahlil", "Ish jarayoningizni o‘rganamiz va bosqichlarni chizamiz."],
-      ["Prototip", "Ekranlarni ko‘rsatamiz — siz tasdiqlaysiz."],
-      ["Birinchi versiya", "Asosiy bo‘limlar ishga tushadi."],
-      ["Ma’lumot ko‘chirish", "Excel yoki eski tizimdan bazani ko‘chiramiz."],
-      ["O‘qitish", "Xodimlarga tizimda ishlashni o‘rgatamiz."],
-      ["Yordam va rivojlantirish", "3 oy bepul yordam, keyin xohishga ko‘ra."]
+      ["Bepul tahlil", "Ish jarayoningizni o‘rganamiz va bosqichlarni chizamiz.", "Ish jarayoningiz xaritasi"],
+      ["Prototip", "Ekranlarni ko‘rsatamiz — siz tasdiqlaysiz.", "Tasdiqlangan ekranlar"],
+      ["Birinchi versiya", "Asosiy bo‘limlar ishga tushadi.", "Ishlayotgan asosiy bo‘limlar"],
+      ["Ma’lumot ko‘chirish", "Excel yoki eski tizimdan bazani ko‘chiramiz.", "Yo‘qotishsiz ko‘chirilgan baza"],
+      ["O‘qitish", "Xodimlarga tizimda ishlashni o‘rgatamiz.", "Tizimda ishlay oladigan jamoa"],
+      ["Yordam va rivojlantirish", "3 oy bepul yordam, keyin xohishga ko‘ra.", "3 oy bepul yordam"]
     ],
-    sections: ["facts", "problems", "tags", "midcta", "pricing", "compare", "process", "portfolio", "faq", "industries", "other"],
+    sections: ["problems", "system", "tags", "midcta", "pricing", "benefits", "compare", "portfolio", "process", "faq", "industries", "other"],
     faq: [
       ["CRM nima va menga kerakmi?", "CRM — mijozlar, sotuv va to‘lovlarni bir joyda yuritadigan tizim. Agar mijozlar Excel yoki daftarda bo‘lsa — kerak."],
       ["CRM qancha turadi?", "Boshlang‘ich versiya 3 mln so‘mdan, bir martalik to‘lov. Oylik obuna va har bir xodim uchun to‘lov yo‘q."],
